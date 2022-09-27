@@ -9,22 +9,27 @@ namespace StartupBuddy.Data
 
         private IUserRepository userRepository;
 
-        public IUserRepository UserRepository => userRepository ??= new UserRepository(startupBuddyContext);
-
-
         public UnitOfWork(StartupBuddyContext startupBuddyContext)
         {
             this.startupBuddyContext = startupBuddyContext;
         }
 
-        public void Save()
-        {
-            startupBuddyContext.SaveChanges();
-        }
-
+        public IBusinessModelRepository BusinessModelRepository => new BusinessModelRepository(startupBuddyContext);
+        public ICompanyRepository CompanyRepository => new CompanyRepository(startupBuddyContext);
+        public IFileRepository FileRepository => new FileRepository(startupBuddyContext);
+        public IMarketResearchRepository MarketResearchRepository => new MarketResearchRepository(startupBuddyContext);
+        public IMemberRepository MemberRepository => new MemberRepository(startupBuddyContext);
+        public IProductRepository ProductRepository => new ProductRepository(startupBuddyContext);
+        public ISocialMediaRepository SocialMediaRepository => new SocialMediaRepository(startupBuddyContext);
+        public IUserRepository UserRepository => userRepository ??= new UserRepository(startupBuddyContext);
         public void Dispose()
         {
             startupBuddyContext.Dispose();
+        }
+
+        public void Save()
+        {
+            startupBuddyContext.SaveChanges();
         }
     }
 }
