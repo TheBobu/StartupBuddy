@@ -28,11 +28,13 @@ namespace StartupBuddy.Data.Repositories
             return await DbContext.Set<TEntity>().ToListAsync();
         }
 
-        public async Task Add(TEntity entity)
+        public async Task<TEntity> Add(TEntity entity)
         {
             if (entity == null) throw new ArgumentNullException(nameof(entity));
 
-            await DbContext.Set<TEntity>().AddAsync(entity);
+            var newEntity = await DbContext.Set<TEntity>().AddAsync(entity);
+
+            return newEntity.Entity;
         }
 
         public async Task AddRange(IEnumerable<TEntity> entities)
@@ -48,6 +50,22 @@ namespace StartupBuddy.Data.Repositories
 
             if (entity != null)
                 DbContext.Set<TEntity>().Remove(entity);
+        }
+
+        public TEntity Update(TEntity entity)
+        {
+            if (entity == null) throw new ArgumentNullException(nameof(entity));
+
+            var newEntity = DbContext.Set<TEntity>().Update(entity);
+
+            return newEntity.Entity;
+        }
+
+        public void UpdateRange(IEnumerable<TEntity> entities)
+        {
+            if (entities == null) throw new ArgumentNullException(nameof(entities));
+
+            DbContext.Set<TEntity>().UpdateRange(entities);
         }
     }
 }

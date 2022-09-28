@@ -1,6 +1,6 @@
-﻿namespace StartupBuddy.Domain.Entities
+﻿namespace StartupBuddy.Dtos.File
 {
-    public class File
+    public class FileDto
     {
         public int Id { get; set; }
         public string Name { get; set; }

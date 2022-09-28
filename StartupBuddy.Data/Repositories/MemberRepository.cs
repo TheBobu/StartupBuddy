@@ -8,5 +8,12 @@ namespace StartupBuddy.Data.Repositories
         public MemberRepository(StartupBuddyContext context) : base(context)
         {
         }
+
+        public void DeleteMembersByCompanyId(int companyId)
+        {
+            var members = DbContext.Members.Where(x => x.CompanyId == companyId).ToList();
+
+            DbContext.RemoveRange(members);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using StartupBuddy.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using StartupBuddy.Domain.Entities;
 using StartupBuddy.Domain.Interfaces;
 
 namespace StartupBuddy.Data.Repositories
@@ -7,6 +8,11 @@ namespace StartupBuddy.Data.Repositories
     {
         public CompanyRepository(StartupBuddyContext context) : base(context)
         {
+        }
+
+        public Company GetByUserId(int userId)
+        {
+            return DbContext.Set<Company>().Where(x => x.UserId == userId).Include(x => x.LogoFile).Include(x => x.Members).FirstOrDefault();
         }
     }
 }

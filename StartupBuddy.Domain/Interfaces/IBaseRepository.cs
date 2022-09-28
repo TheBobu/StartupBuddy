@@ -10,10 +10,14 @@ namespace StartupBuddy.Domain.Interfaces
 
         Task<IEnumerable<TEntity>> GetAll();
 
-        Task Add(TEntity entity);
+        Task<TEntity> Add(TEntity entity);
 
         Task AddRange(IEnumerable<TEntity> entities);
 
         void Remove(TId id);
+
+        TEntity Update(TEntity entity);
+
+        void UpdateRange(IEnumerable<TEntity> entities);
     }
 }

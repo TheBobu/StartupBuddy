@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using StartupBuddy.Domain.Entities;
+using StartupBuddy.Dtos.Sections;
 using StartupBuddy.Dtos.User;
 
 namespace StartupBuddy.BusinessLogic
@@ -12,6 +13,12 @@ namespace StartupBuddy.BusinessLogic
             CreateMap<UserDto, User>();
             CreateMap<User, AccountDto>();
             CreateMap<AccountDto, User>();
+            
+            CreateMap<Company, CompanyDto>();
+            CreateMap<CompanyDto, Company>();
+
+            CreateMap<Product, ProductDto>();
+            CreateMap<ProductDto, Product>();
         }
     }
 }

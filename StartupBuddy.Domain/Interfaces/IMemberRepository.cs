@@ -4,5 +4,6 @@ namespace StartupBuddy.Domain.Interfaces
 {
     public interface IMemberRepository : IBaseRepository<Member, int>
     {
+        void DeleteMembersByCompanyId(int companyId);
     }
 }
