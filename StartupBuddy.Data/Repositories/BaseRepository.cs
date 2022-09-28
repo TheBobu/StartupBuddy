@@ -60,5 +60,12 @@ namespace StartupBuddy.Data.Repositories
 
             return newEntity.Entity;
         }
+
+        public void UpdateRange(IEnumerable<TEntity> entities)
+        {
+            if (entities == null) throw new ArgumentNullException(nameof(entities));
+
+            DbContext.Set<TEntity>().UpdateRange(entities);
+        }
     }
 }

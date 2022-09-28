@@ -20,10 +20,17 @@ namespace StartupBuddy.BusinessLogic.Implementations
             if (company.Id != default)
             {
                 company.UserId = identityContext.UserId.Value;
-                company.LogoFile = GetFileFromIFormFile(company.LogoFormFile);
 
-                var file = await unitOfWork.FileRepository.Add(mapper.Map<File>(company.LogoFile));
-                company.LogoFileId = file.Id;
+                if (company.LogoFormFile != null)
+                {
+                    company.LogoFile = GetFileFromIFormFile(company.LogoFormFile);
+                    var file = await unitOfWork.FileRepository.Add(mapper.Map<File>(company.LogoFile));
+                    company.LogoFileId = file.Id;
+                }
+                if (company.Members != null)
+                {
+                    await unitOfWork.MemberRepository.AddRange(mapper.Map<IEnumerable<Member>>(company.Members));
+                }
 
                 var newCompany = mapper.Map<CompanyDto>(await unitOfWork.CompanyRepository.Add(mapper.Map<Company>(company)));
                 unitOfWork.Save();
@@ -46,7 +53,13 @@ namespace StartupBuddy.BusinessLogic.Implementations
                         unitOfWork.FileRepository.Update(mapper.Map<File>(company.LogoFile));
                     }
                 }
-                
+
+                if (company.Members != null)
+                {
+                    unitOfWork.MemberRepository.DeleteMembersByCompanyId(company.Id);
+                    await unitOfWork.MemberRepository.AddRange(mapper.Map<IEnumerable<Member>>(company.Members));
+                }
+
                 var updatedCompany = mapper.Map<CompanyDto>(unitOfWork.CompanyRepository.Update(mapper.Map<Company>(company)));
                 unitOfWork.Save();
 
@@ -56,7 +69,7 @@ namespace StartupBuddy.BusinessLogic.Implementations
 
         public CompanyDto GetById(int id)
         {
-            return mapper.Map<CompanyDto>(unitOfWork.CompanyRepository.Get(id));
+            return mapper.Map<CompanyDto>(unitOfWork.CompanyRepository.GetById(id));
         }
 
         private FileDto GetFileFromIFormFile(IFormFile file)

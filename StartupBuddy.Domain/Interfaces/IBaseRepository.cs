@@ -17,5 +17,7 @@ namespace StartupBuddy.Domain.Interfaces
         void Remove(TId id);
 
         TEntity Update(TEntity entity);
+
+        void UpdateRange(IEnumerable<TEntity> entities);
     }
 }
