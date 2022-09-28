@@ -7,5 +7,7 @@ namespace StartupBuddy.BusinessLogic.Interfaces
         AccountDto AuthenticateUser(LoginDto login);
 
         bool Register(UserDto userDto);
+
+        void Logout();
     }
 }

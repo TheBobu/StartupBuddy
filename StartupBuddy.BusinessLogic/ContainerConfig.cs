@@ -10,9 +10,12 @@ namespace StartupBuddy.BusinessLogic
     {
         public static IServiceCollection AddDependencies(this IServiceCollection services)
         {
+            services.AddSingleton<IIdentityContext, IdentityContext>();
+
             services.AddSingleton<IUnitOfWork, UnitOfWork>();
 
             services.AddScoped<IUserBusinessLogic, UserBusinessLogic>();
+            services.AddScoped<ICompanyBusinessLogic, CompanyBusinessLogic>();
 
             return services;
         }

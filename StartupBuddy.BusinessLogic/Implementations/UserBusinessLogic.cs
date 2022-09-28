@@ -12,16 +12,12 @@ using System.Text;
 
 namespace StartupBuddy.BusinessLogic.Implementations
 {
-    public class UserBusinessLogic : IUserBusinessLogic
+    public class UserBusinessLogic : BaseBusinessLogic, IUserBusinessLogic
     {
-        private readonly IUnitOfWork unitOfWork;
-        private IMapper mapper;
         private IConfiguration config;
 
-        public UserBusinessLogic(IUnitOfWork unitOfWork, IMapper mapper, IConfiguration config)
+        public UserBusinessLogic(IUnitOfWork unitOfWork, IMapper mapper, IConfiguration config, IIdentityContext identityContext) : base(identityContext, unitOfWork, mapper)
         {
-            this.unitOfWork = unitOfWork;
-            this.mapper = mapper;
             this.config = config;
         }
 
@@ -38,6 +34,7 @@ namespace StartupBuddy.BusinessLogic.Implementations
             {
                 if (Sha256_hash(login.Password).Equals(user.Password))
                 {
+                    identityContext.Login(user);
                     var account = mapper.Map<AccountDto>(user);
                     account.AuthorizationToken = GenerateJSONWebToken(mapper.Map<UserDto>(user));
                     return account;
@@ -92,6 +89,11 @@ namespace StartupBuddy.BusinessLogic.Implementations
             }
 
             return Sb.ToString();
+        }
+
+        public void Logout()
+        {
+            identityContext.Logout();
         }
     }
 }
