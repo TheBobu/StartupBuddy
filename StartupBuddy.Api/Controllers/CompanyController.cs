@@ -15,10 +15,10 @@ namespace StartupBuddy.Api.Controllers
             this.companyBusinessLogic = companyBusinessLogic;
         }
 
-        [HttpGet("{companyId}")]
-        public CompanyDto GetCompany(int companyId)
+        [HttpGet]
+        public CompanyDto GetCompany()
         {
-            return companyBusinessLogic.GetById(companyId);
+            return companyBusinessLogic.GetByUserId();
         }
 
         [HttpPost]

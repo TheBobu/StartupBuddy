@@ -10,9 +10,9 @@ namespace StartupBuddy.Data.Repositories
         {
         }
 
-        public Company GetById(int id)
+        public Company GetByUserId(int userId)
         {
-            return DbContext.Set<Company>().Where(x => x.Id == id).Include(x => x.LogoFile).Include(x => x.Members).FirstOrDefault();
+            return DbContext.Set<Company>().Where(x => x.UserId == userId).Include(x => x.LogoFile).Include(x => x.Members).FirstOrDefault();
         }
     }
 }

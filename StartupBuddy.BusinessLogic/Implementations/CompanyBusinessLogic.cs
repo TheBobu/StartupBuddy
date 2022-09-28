@@ -67,9 +67,9 @@ namespace StartupBuddy.BusinessLogic.Implementations
             }
         }
 
-        public CompanyDto GetById(int id)
+        public CompanyDto GetByUserId()
         {
-            return mapper.Map<CompanyDto>(unitOfWork.CompanyRepository.GetById(id));
+            return mapper.Map<CompanyDto>(unitOfWork.CompanyRepository.GetByUserId(identityContext.UserId.Value));
         }
 
         private FileDto GetFileFromIFormFile(IFormFile file)

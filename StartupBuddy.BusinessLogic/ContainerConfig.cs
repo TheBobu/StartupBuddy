@@ -16,6 +16,7 @@ namespace StartupBuddy.BusinessLogic
 
             services.AddScoped<IUserBusinessLogic, UserBusinessLogic>();
             services.AddScoped<ICompanyBusinessLogic, CompanyBusinessLogic>();
+            services.AddScoped<IProductBusinessLogic, ProductBusinessLogic>();
 
             return services;
         }
