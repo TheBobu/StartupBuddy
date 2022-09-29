@@ -25,6 +25,12 @@ namespace StartupBuddy.BusinessLogic
 
             CreateMap<BusinessModel, BusinessModelDto>();
             CreateMap<BusinessModelDto, BusinessModel>();
+
+            CreateMap<PersonalInfo, PersonalInfoDto>();
+            CreateMap<PersonalInfoDto, PersonalInfo>();
+
+            CreateMap<SocialMedia, SocialMediaDto>();
+            CreateMap<SocialMediaDto, SocialMedia>();
         }
     }
 }

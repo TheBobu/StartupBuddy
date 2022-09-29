@@ -19,6 +19,7 @@ namespace StartupBuddy.Data
         public IFileRepository FileRepository => new FileRepository(startupBuddyContext);
         public IMarketResearchRepository MarketResearchRepository => new MarketResearchRepository(startupBuddyContext);
         public IMemberRepository MemberRepository => new MemberRepository(startupBuddyContext);
+        public IPersonalInfoRepository PersonalInfoRepository => new PersonalInfoRepository(startupBuddyContext);
         public IProductRepository ProductRepository => new ProductRepository(startupBuddyContext);
         public ISocialMediaRepository SocialMediaRepository => new SocialMediaRepository(startupBuddyContext);
         public IUserRepository UserRepository => userRepository ??= new UserRepository(startupBuddyContext);
