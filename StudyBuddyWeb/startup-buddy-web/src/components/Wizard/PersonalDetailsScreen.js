@@ -3,7 +3,7 @@ import { Card, CardContent, Box } from '@mui/material';
 import { Field, Form, Formik } from 'formik';
 import { TextField, Select } from 'formik-mui';
 import { TranslationContext } from '../../store/translation-context';
-import { useContext,useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { Grid, MenuItem } from '@mui/material';
 import Controls from '../Controls/Controls';
 import * as Yup from 'yup';
@@ -41,8 +41,6 @@ const ValidationSchema = () => {
   });
 };
 
-
-
 const PersonalDetailsScreen = () => {
   const { t } = useContext(TranslationContext);
   const submitHandler = (values) => {
@@ -51,7 +49,7 @@ const PersonalDetailsScreen = () => {
     sendData(values);
   };
 
-  const [InitialValues, setInitialValues] = useState({
+  const personalData = {
     FirstName: '',
     LastName: '',
     Age: '',
@@ -61,9 +59,19 @@ const PersonalDetailsScreen = () => {
     Address: '',
     Education: '',
     ExperienceLevel: '',
-  });
+  };
+  const [InitialValues, setInitialValues] = useState(personalData);
 
-  const { fetchData: sendData, response:responseSend } = useHttp({
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setInitialValues({
+      ...InitialValues,
+      [name]: value,
+    });
+    console.log(e.target)
+  };
+
+  const { fetchData: sendData, response: responseSend } = useHttp({
     autoRun: false,
     method: 'post',
     url: '/PersonalInfo',
@@ -74,18 +82,17 @@ const PersonalDetailsScreen = () => {
 
   const { response: responseGet } = useHttp({
     method: 'get',
-    url: '/PersonalInfo',   
+    url: '/PersonalInfo',
   });
-  
+
   useEffect(() => {
-    if(responseGet!=null){
-      console.log(responseGet)
+    if (responseGet != null) {
+      console.log(responseGet);
       setInitialValues(responseGet);
     }
-    return () => {
-    }
-  }, [responseGet])
-  
+    return () => {};
+  }, [responseGet]);
+
   return (
     <Card className={classes.wizard_container}>
       <CardContent>
@@ -93,9 +100,11 @@ const PersonalDetailsScreen = () => {
           initialValues={InitialValues}
           validationSchema={ValidationSchema}
           onSubmit={submitHandler}
-          enableReinitialize={true}
+        enableReinitialize={true}
         >
-          <Form autoComplete='off'>
+          {({ values,handleChange}) => {
+            return(
+          <form>
             <Grid container sx={{ mt: 4 }}>
               <Grid item xs={12}>
                 <Box paddingBottom={3} sx={{ mr: 2 }}>
@@ -103,8 +112,10 @@ const PersonalDetailsScreen = () => {
                     <Field
                       style={{ width: '100%' }}
                       label={t('Authentication.FirstName')}
-                      component={TextField}
+                      component={Controls.Input}
                       name='FirstName'
+                      onChange={handleChange}
+                      value={values.firstName || ""}
                     ></Field>
                   </div>
                   <div className={classes.field}>
@@ -113,6 +124,8 @@ const PersonalDetailsScreen = () => {
                       label={t('Authentication.LastName')}
                       component={TextField}
                       name='LastName'
+                      onChange={handleChange}
+                      value={values.lastName || ""}
                     ></Field>
                   </div>
                   <div className={classes.field}>
@@ -121,6 +134,8 @@ const PersonalDetailsScreen = () => {
                       label={t('PersonalDetailsScreen.Age')}
                       component={TextField}
                       name='Age'
+                      onChange={handleChange}
+                      value={values.age || ""}
                     ></Field>
                   </div>
                   <div className={classes.field}>
@@ -129,6 +144,8 @@ const PersonalDetailsScreen = () => {
                       label={t('PersonalDetailsScreen.CNP')}
                       component={TextField}
                       name='CNP'
+                      onChange={handleChange}
+                      value={values.cnp || ""}
                     ></Field>
                   </div>
                   <div className={classes.field}>
@@ -137,6 +154,8 @@ const PersonalDetailsScreen = () => {
                       label={t('PersonalDetailsScreen.Series')}
                       component={TextField}
                       name='Series'
+                      onChange={handleChange}
+                      value={values.series || ""}
                     ></Field>
                   </div>
                   <div className={classes.field}>
@@ -145,6 +164,8 @@ const PersonalDetailsScreen = () => {
                       label={t('PersonalDetailsScreen.Number')}
                       component={TextField}
                       name='Number'
+                      onChange={handleChange}
+                      value={values.number || ""}
                     ></Field>
                   </div>
                   <div className={classes.field}>
@@ -153,6 +174,8 @@ const PersonalDetailsScreen = () => {
                       label={t('PersonalDetailsScreen.Address')}
                       component={TextField}
                       name='Address'
+                      onChange={handleChange}
+                      value={values.address || ""}
                     ></Field>
                   </div>
                   <div className={classes.field}>
@@ -161,14 +184,18 @@ const PersonalDetailsScreen = () => {
                       label={t('PersonalDetailsScreen.Education')}
                       component={TextField}
                       name='Education'
+                      onChange={handleChange}
+                      value={values.education || ""}
                     ></Field>
                   </div>
                   <div className={classes.field}>
                     <Field
-                      style={{ width: '100%' }}
+                      formControl={{ sx: { width: '100%' } }}
                       label={t('PersonalDetailsScreen.ExperienceLevel')}
                       name='ExperienceLevel'
                       component={Select}
+                      onChange={handleChange}
+                      value={values.experienceLevel || ""}
                     >
                       <MenuItem value={1}>
                         {t('PersonalDetailsScreen.Beginner')}
@@ -191,7 +218,9 @@ const PersonalDetailsScreen = () => {
                 text={t('General.Next')}
               />
             </Grid>
-          </Form>
+          </form>
+          );
+        }}
         </Formik>
       </CardContent>
     </Card>
