@@ -10,6 +10,7 @@
         IProductRepository ProductRepository { get; }
         ISocialMediaRepository SocialMediaRepository { get; }
         IUserRepository UserRepository { get; }
+
         void Dispose();
 
         void Save();

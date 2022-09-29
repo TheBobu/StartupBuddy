@@ -8,6 +8,7 @@ namespace StartupBuddy.Domain.Interfaces
         public string? Email { get; set; }
 
         void Login(User user);
+
         void Logout();
     }
 }

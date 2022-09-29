@@ -8,7 +8,7 @@ namespace StartupBuddy.BusinessLogic.Implementations
 {
     public class ProductBusinessLogic : BaseBusinessLogic, IProductBusinessLogic
     {
-        public ProductBusinessLogic(IIdentityContext identityContext, IUnitOfWork unitOfWork, IMapper mapper):base(identityContext, unitOfWork, mapper)
+        public ProductBusinessLogic(IIdentityContext identityContext, IUnitOfWork unitOfWork, IMapper mapper) : base(identityContext, unitOfWork, mapper)
         {
         }
 
@@ -35,12 +35,12 @@ namespace StartupBuddy.BusinessLogic.Implementations
         {
             var company = unitOfWork.CompanyRepository.GetByUserId(identityContext.UserId.Value);
 
-            if(company == null)
+            if (company == null)
             {
                 return null;
             }
 
-            var product = await unitOfWork.ProductRepository.GetByPredicate(x=>x.CompanyId == company.Id);
+            var product = await unitOfWork.ProductRepository.GetByPredicate(x => x.CompanyId == company.Id);
 
             return mapper.Map<ProductDto>(product.FirstOrDefault());
         }

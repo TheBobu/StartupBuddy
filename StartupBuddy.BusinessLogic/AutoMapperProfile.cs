@@ -13,7 +13,7 @@ namespace StartupBuddy.BusinessLogic
             CreateMap<UserDto, User>();
             CreateMap<User, AccountDto>();
             CreateMap<AccountDto, User>();
-            
+
             CreateMap<Company, CompanyDto>();
             CreateMap<CompanyDto, Company>();
 

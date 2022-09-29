@@ -22,6 +22,7 @@ namespace StartupBuddy.Data
         public IProductRepository ProductRepository => new ProductRepository(startupBuddyContext);
         public ISocialMediaRepository SocialMediaRepository => new SocialMediaRepository(startupBuddyContext);
         public IUserRepository UserRepository => userRepository ??= new UserRepository(startupBuddyContext);
+
         public void Dispose()
         {
             startupBuddyContext.Dispose();

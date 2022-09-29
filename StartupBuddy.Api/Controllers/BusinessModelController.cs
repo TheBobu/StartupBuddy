@@ -8,7 +8,6 @@ namespace StartupBuddy.Api.Controllers
     [ApiController]
     public class BusinessModelController : Controller
     {
-
         private readonly IBusinessModelBusinessLogic businessModelBusinessLogic;
 
         public BusinessModelController(IBusinessModelBusinessLogic businessModelBusinessLogic)

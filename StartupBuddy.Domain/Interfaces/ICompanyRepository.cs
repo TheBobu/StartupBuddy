@@ -4,6 +4,6 @@ namespace StartupBuddy.Domain.Interfaces
 {
     public interface ICompanyRepository : IBaseRepository<Company, int>
     {
-        Company GetByUserId (int id);
+        Company GetByUserId(int id);
     }
 }
