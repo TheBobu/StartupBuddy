@@ -15,12 +15,15 @@ import BusinessModelDrawIOScreen from './components/Wizard/BusinessModelDrawIOSc
 import FundRaisingScreen from './components/Wizard/FundRaisingScreen';
 import SocialMediaScreen from './components/Wizard/SocialMediaScreen';
 import PitchScreen from './components/Wizard/PitchScreen';
+import Layout from './components/Layout/Layout';
+
 
 function App() {
   const authCtx = useContext(AuthContext);
   const isLoggedIn = authCtx.isLoggedIn;
   return (
-    <TranslationProvider>
+    <Layout>    
+      <TranslationProvider>
     <BrowserRouter>
     <Switch>
     <Route exact path="/auth">
@@ -62,6 +65,7 @@ function App() {
     </Switch>
     </BrowserRouter>
     </TranslationProvider>
+    </Layout>
   );
 }
 

@@ -64,5 +64,21 @@
     "DifferentPasswords": "Parolele nu coincid",
     "Unexpected": "Ups..Eroare neașteptată",
     "NewPasswordIsNotDifferentFromOld": "Noua parolă trebuie să fie diferită față de cea veche"
+  },
+  "General" :{
+    "Next": "Mergi mai departe",
+    "RequiredField": "Acest câmp este obligatoriu!"
+  },
+  "PersonalDetailsScreen":{
+    "Age": "Vâstă",
+    "CNP": "CNP",
+    "Series": "Serie",
+    "Number": "Număr",
+    "Address": "Adresă",
+    "Education": "Educație",
+    "ExperienceLevel": "Experiență",
+    "Beginner": "Începător",
+    "Medium": "Mediu",
+    "Advanced": "Avansat"
   }
 }
