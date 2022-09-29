@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "./store/auth-context";
 import { TranslationProvider } from './store/translation-context';
+import PersonalDetailsScreen from './components/Wizard/PersonalDetailsScreen';
 function App() {
   const authCtx = useContext(AuthContext);
   const isLoggedIn = authCtx.isLoggedIn;
@@ -13,6 +14,9 @@ function App() {
     <Switch>
     <Route exact path="/auth">
       {!isLoggedIn ? <Authentication /> : <Redirect to="/" />}
+     </Route>
+     <Route exact path="/">
+       <PersonalDetailsScreen/>
      </Route>
     </Switch>
     </BrowserRouter>
