@@ -20,7 +20,7 @@ namespace StartupBuddy.BusinessLogic
             services.AddScoped<IMarketResearchBusinessLogic, MarketResearchBusinessLogic>();
             services.AddScoped<IPersonalInfoBusinessLogic, PersonalInfoBusinessLogic>();
             services.AddScoped<IBusinessModelBusinessLogic, BusinessModelBusinessLogic>();
-
+            services.AddScoped<ISocialMediaBusinessLogic, SocialMediaBusinessLogic>();
 
             return services;
         }
