@@ -16,6 +16,8 @@ import FundRaisingScreen from './components/Wizard/FundRaisingScreen';
 import SocialMediaScreen from './components/Wizard/SocialMediaScreen';
 import PitchScreen from './components/Wizard/PitchScreen';
 import Layout from './components/Layout/Layout';
+import ExportDataScreen from './components/Wizard/ExportDataScreen';
+import OrganizationTypeSuggestionScreen from './components/Wizard/OrganizationTypeSuggestionScreen';
 
 
 function App() {
@@ -61,6 +63,12 @@ function App() {
      </Route>
      <Route exact path="/pitchScreen">
        <PitchScreen/>
+     </Route>
+     <Route exact path="/exportDataScreen">
+       <ExportDataScreen/>
+     </Route>
+     <Route exact path="/suggestionsScreen">
+       <OrganizationTypeSuggestionScreen/>
      </Route>
     </Switch>
     </BrowserRouter>
