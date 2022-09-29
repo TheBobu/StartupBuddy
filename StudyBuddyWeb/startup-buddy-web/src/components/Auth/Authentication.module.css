@@ -1,0 +1,69 @@
+.auth {
+  margin: 3rem auto;
+  width: 95%;
+  max-width: 35rem;
+  border-radius: 6px;
+  background-color: #4750ad;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  text-align: center;
+  color: #fafafa;
+}
+
+.snackBar {
+  background-color: #4750ad;
+  color: #fafafa;
+}
+
+.auth h1 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #fafafa;
+}
+
+
+.actions {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.actions button {
+  cursor: pointer;
+  font: inherit;
+  color: #4750ad;
+  background-color: #09ffdf;
+  border-radius: 4px;
+  padding: 0.5rem 2.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.8em;
+}
+
+.actions button:hover {
+  background-color: #fafafa;
+}
+
+.lostPassword {
+  color: #4750ad;
+  text-align: right;
+}
+.actions .toggle {
+  margin-top: 1rem;
+  background-color: transparent;
+  color: #fafafa;
+  border: none;
+  padding: 0.15rem 1.5rem;
+  text-transform: initial;
+  font-size: 0.7em;
+}
+
+.actions .toggle:hover {
+  background-color: transparent;
+  color: #fafafa;
+  text-transform: initial;
+  font-size: 0.7em;
+  font-weight: 400;
+}
