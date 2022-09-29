@@ -6,8 +6,15 @@ import AuthContext from "./store/auth-context";
 import { TranslationProvider } from './store/translation-context';
 import PersonalDetailsScreen from './components/Wizard/PersonalDetailsScreen';
 import ProductDescriptionScreen from './components/Wizard/ProductDescriptionScreen';
-import MarketResearchScreen from './components/Wizard/MarketResearchScreen';
+import MarketResearchScreen from './components/Wizard/ProductDescriptionScreen';
 import MarketResearchInDetailsScreen from './components/Wizard/MarketResearchInDetailsScreen';
+import CompanyDescriptionScreen from './components/Wizard/CompanyDescriptionScreen'; 
+import BusinessModelScreen from './components/Wizard/BusinessModelScreen';
+import BusinessModelQuestionsScreen from './components/Wizard/BusinessModelQuestionsScreen';
+import BusinessModelDrawIOScreen from './components/Wizard/BusinessModelDrawIOScreen';
+import FundRaisingScreen from './components/Wizard/FundRaisingScreen';
+import SocialMediaScreen from './components/Wizard/SocialMediaScreen';
+import PitchScreen from './components/Wizard/PitchScreen';
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -30,6 +37,27 @@ function App() {
      </Route>
      <Route exact path="/marketResearchInDetailsScreen">
        <MarketResearchInDetailsScreen/>
+     </Route>
+     <Route exact path="/companyDescriptionScreen">
+       <CompanyDescriptionScreen/>
+     </Route>
+     <Route exact path="/businessModelScreen">
+       <BusinessModelScreen/>
+     </Route>
+     <Route exact path="/businessModelQuestionsScreen">
+       <BusinessModelQuestionsScreen/>
+     </Route>
+     <Route exact path="/businessModelDrawIOScreen">
+       <BusinessModelDrawIOScreen/>
+     </Route>
+     <Route exact path="/fundRaisingScreen">
+       <FundRaisingScreen/>
+     </Route>
+     <Route exact path="/socialMediaScreen">
+       <SocialMediaScreen/>
+     </Route>
+     <Route exact path="/pitchScreen">
+       <PitchScreen/>
      </Route>
     </Switch>
     </BrowserRouter>
