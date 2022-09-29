@@ -22,7 +22,6 @@ const ValidationSchema = () => {
       .max(50, 'Too Long!')
       .required(i18n.t('General.RequiredField')),
     Age: Yup.number()
-      .required(i18n.t('General.RequiredField'))
       .required(i18n.t('General.RequiredField')),
     CNP: Yup.string().required(i18n.t('General.RequiredField')),
     Series: Yup.string()

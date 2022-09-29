@@ -8,6 +8,7 @@ import { Grid } from "@mui/material";
 import Controls from "../Controls/Controls"
 import * as Yup from "yup";
 import i18n from "i18next";
+import classes from '../Wizard/Wizard.module.css';
 
 const ValidationSchema = () => {
     return Yup.object().shape({
@@ -17,8 +18,8 @@ const ValidationSchema = () => {
   };
 
   const InitialValues = {
-    Demand: "",
-    Interest: "",
+    Demand: '',
+    Interest: '',
     };
 
     const MarketResearchScreen = () => {
@@ -27,9 +28,9 @@ const ValidationSchema = () => {
             console.log(values);
         }
         return (
-        <Card>
-          <CardContent>
-            <h1>Hello World</h1>
+        <Card className={classes.wizard_container}>
+          <CardContent> 
+            <h1>Market Research</h1>
             <Formik
             initialValues={InitialValues}
             validationSchema={ValidationSchema}
@@ -38,30 +39,38 @@ const ValidationSchema = () => {
                 <Grid container sx={{ mt: 4 }}>
                   <Grid item xs={12}>
                     <Box paddingBottom={3} sx={{ mr: 2 }}>
+                    <div className={classes.field}>
                     <Field
-                        style={{ width: "100%" }}
-                        label={t(MarketResearchScreen.Demand)}
-                        placeholder="Demand"
+                        style={{ width: '100%' }}
+                        label={t('MarketResearchScreen.Demand')}
+                        placeholder={t('MarketResearchScreen.Demand')}
                         component={TextField}
                         name="Demand"
                         multiline
                         rows={4}
                       ></Field>
+                      </div>
+                      <div className={classes.field}>
                       <Field
-                        style={{ width: "100%" }}
-                        label={t(MarketResearchScreen.Interest)}
-                        placeholder="Interest"
+                        style={{ width: '100%' }}
+                        label={t('MarketResearchScreen.Interest')}
+                        placeholder={t('MarketResearchScreen.Interest')}
                         component={TextField}
                         name="Interest"
                         multiline
                         rows={4}
                       ></Field>
+                      </div>
                     </Box>
                   </Grid>
                 </Grid>
                 <Grid item xs={12}>
-                <Controls.Button type="submit" text="Submit" />
-                </Grid>
+              <Controls.Button
+                className={classes.submit_button}
+                type='submit'
+                text={t('General.Next')}
+              />
+            </Grid>
               </Form>
             </Formik>
           </CardContent>

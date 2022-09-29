@@ -8,6 +8,7 @@ import { Grid } from "@mui/material";
 import Controls from "../Controls/Controls"
 import * as Yup from "yup";
 import i18n from "i18next";
+import classes from '../Wizard/Wizard.module.css';
 
 const ValidationSchema = () => {
     return Yup.object().shape({
@@ -31,7 +32,7 @@ const SocialMediaScreen = () => {
         console.log(values);
     }
     return (
-    <Card>
+    <Card className={classes.wizard_container}>
       <CardContent>
         <h1>Social Media Pages</h1>
         <Formik
@@ -42,43 +43,47 @@ const SocialMediaScreen = () => {
             <Grid container sx={{ mt: 4 }}>
               <Grid item xs={12}>
                 <Box paddingBottom={3} sx={{ mr: 2 }}>
+                <div className={classes.field}>
                 <Field
                     style={{ width: "100%" }}
                     label={"Web Page"}
                     component={TextField}
                     name="WebPage"
-                    multiline
-                    rows={4}
                   ></Field>
+                  </div>
+                  <div className={classes.field}>
                   <Field
                     style={{ width: "100%" }}
                     label={"Facebook"}
                     component={TextField}
                     name="Facebook"
-                    multiline
-                    rows={4}
                   ></Field>
+                  </div>
+                  <div className={classes.field}>
                   <Field
                     style={{ width: "100%" }}
                     label={"Instagram"}
                     component={TextField}
                     name="Instagram"
-                    multiline
-                    rows={4}
                   ></Field>
+                  </div>
+                  <div className={classes.field}>
                   <Field
                     style={{ width: "100%" }}
                     label={"Linkedin"}
                     component={TextField}
                     name="Linkedin"
-                    multiline
-                    rows={4}
                   ></Field>
+                  </div>
                 </Box>
               </Grid>
             </Grid>
             <Grid item xs={12}>
-            <Controls.Button type="submit" text="Submit" />
+              <Controls.Button
+                className={classes.submit_button}
+                type='submit'
+                text={t('General.Next')}
+              />
             </Grid>
           </Form>
         </Formik>

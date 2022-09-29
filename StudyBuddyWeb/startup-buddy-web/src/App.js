@@ -6,7 +6,7 @@ import AuthContext from "./store/auth-context";
 import { TranslationProvider } from './store/translation-context';
 import PersonalDetailsScreen from './components/Wizard/PersonalDetailsScreen';
 import ProductDescriptionScreen from './components/Wizard/ProductDescriptionScreen';
-import MarketResearchScreen from './components/Wizard/ProductDescriptionScreen';
+import MarketResearchScreen from './components/Wizard/MarketResearchScreen';
 import MarketResearchInDetailsScreen from './components/Wizard/MarketResearchInDetailsScreen';
 import CompanyDescriptionScreen from './components/Wizard/CompanyDescriptionScreen'; 
 import BusinessModelScreen from './components/Wizard/BusinessModelScreen';

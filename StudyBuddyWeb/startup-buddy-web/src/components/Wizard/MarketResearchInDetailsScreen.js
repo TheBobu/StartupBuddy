@@ -8,6 +8,7 @@ import { Grid } from "@mui/material";
 import Controls from "../Controls/Controls"
 import * as Yup from "yup";
 import i18n from "i18next";
+import classes from '../Wizard/Wizard.module.css';
 
 const ValidationSchema = () => {
     return Yup.object().shape({
@@ -31,9 +32,9 @@ const ValidationSchema = () => {
             console.log(values);
         }
         return (
-        <Card>
+        <Card className={classes.wizard_container}>
           <CardContent>
-            <h1>Hello World</h1>
+          <h1>Market Research</h1>
             <Formik
             initialValues={InitialValues}
             validationSchema={ValidationSchema}
@@ -42,48 +43,60 @@ const ValidationSchema = () => {
                 <Grid container sx={{ mt: 4 }}>
                   <Grid item xs={12}>
                     <Box paddingBottom={3} sx={{ mr: 2 }}>
+                    <div className={classes.field}>
                     <Field
                         style={{ width: "100%" }}
-                        label={t(MarketResearchInDetailsScreen.BusinessArea)}
+                        label={t('MarketResearchInDetailsScreen.BusinessArea')}
                         placeholder="BusinessArea"
                         component={TextField}
                         name="BusinessArea"
                         multiline
                         rows={2}
                       ></Field>
+                      </div>
+                      <div className={classes.field}>
                       <Field
                         style={{ width: "100%" }}
-                        label={t(MarketResearchInDetailsScreen.Competitors)}
+                        label={t('MarketResearchInDetailsScreen.Competitors')}
                         placeholder="Competitors"
                         component={TextField}
                         name="Competitors"
                         multiline
                         rows={2}
                       ></Field>
+                      </div>
+                      <div className={classes.field}>
                       <Field
                         style={{ width: "100%" }}
-                        label={t(MarketResearchInDetailsScreen.Revenue)}
+                        label={t('MarketResearchInDetailsScreen.Revenue')}
                         placeholder="Revenue"
                         component={TextField}
                         name="Revenue"
                         multiline
                         rows={2}
                       ></Field>
+                      </div>
+                      <div className={classes.field}>
                       <Field
                         style={{ width: "100%" }}
-                        label={t(MarketResearchInDetailsScreen.Differentiation)}
+                        label={t('MarketResearchInDetailsScreen.Differentiation')}
                         placeholder="Differentiation"
                         component={TextField}
                         name="Differentiation"
                         multiline
                         rows={2}
                       ></Field>
+                      </div>
                     </Box>
                   </Grid>
                 </Grid>
                 <Grid item xs={12}>
-                <Controls.Button type="submit" text="Submit" />
-                </Grid>
+              <Controls.Button
+                className={classes.submit_button}
+                type='submit'
+                text={t('General.Next')}
+              />
+            </Grid>
               </Form>
             </Formik>
           </CardContent>

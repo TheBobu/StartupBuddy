@@ -80,5 +80,44 @@
     "Beginner": "Începător",
     "Medium": "Mediu",
     "Advanced": "Avansat"
+  },
+  "MarketResearchScreen":{
+    "Demand": "Există o dorință pentru produsul sau serviciul dvs?",
+    "Interest": "Cate persoane sunt interesate de ceea ce oferă firma ta?"
+  },
+  "MarketResearchInDetailsScreen":{
+    "BusinessArea": "La ce fel de persoane poate ajunge business-ul tău?",
+    "Competitors": "Cu ce se diferențiază produsul tău de ceilalți competitori?",
+    "Revenue": "Cât plătesc potențialii clienți ale acestor produse?",
+    "Differentiation": "Ce alte produse similare există?"
+  },
+  "BusinessModelQuestionsScreen":{
+    "Problem": "Care este problema pe care o rezolvă produsul tău?",
+    "ProductSolution": "Care este soluția ta?",
+    "PrincipalClients": "Cine sunt principalii clienți?",
+    "Money": "Cum faci bani?"
+  },
+  "ProductDescriptionScreen":{
+    "Name": "Nume Produs",
+    "ProductType": "Tip Produs",
+    "Description": "Descriere"
+  },
+  "CompanyDescriptionScreen":{
+    "Name": "Numele companiei",
+    "Domain": "Domeniul",
+    "MainActivity": "Activitatea principală",
+    "SecondaryActivity": "Activitatea secundară",
+    "Description": "Descriere",
+    "ExperienceLevel": "Nivel de experiență în antreprenoriat",
+    "NumberOfEmployees": "Număr angajați",
+    "BusinessEmail": "Business Email",
+    "Phone": "Telefon",
+    "CUI": "CUI",
+    "DateFounded": "Dată înființare",
+    "SocialDomain": "Sediul social",
+    "ONRC": "ONRC",
+    "Accountant": "Contabil",
+    "Employees": "Angajați",
+    "StockMarket": "Listare la bursă"
   }
 }
