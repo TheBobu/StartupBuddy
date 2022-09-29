@@ -15,11 +15,11 @@ const ValidationSchema = () => {
     LastName: Yup.string().min(2, "Too Short!").max(50, "Too Long!").required(i18n.t("General.RequiredField")),
     Age: Yup.number().required(i18n.t("General.RequiredField")).required(i18n.t("General.RequiredField")),
     CNP: Yup.string().required(i18n.t("General.RequiredField")),
-    Serie: Yup.string().max(2, "Too Long!").required(i18n.t("General.RequiredField")),
-    NR: Yup.number().required(i18n.t("General.RequiredField")),
+    Series: Yup.string().max(2, "Too Long!").required(i18n.t("General.RequiredField")),
+    Number: Yup.number().required(i18n.t("General.RequiredField")),
     Address: Yup.string().min(2, "Too Short!").max(100, "Too Long!").required(i18n.t("General.RequiredField")),
     Education: Yup.string().min(2, "Too Short!").max(100, "Too Long!").required(i18n.t("General.RequiredField")),
-    NivelExperientaAntreprenoriat: Yup.number().required(i18n.t("General.RequiredField")),
+    ExperienceLevel: Yup.number().required(i18n.t("General.RequiredField")),
   });
 };
 
@@ -28,11 +28,11 @@ const InitialValues = {
     LastName: "",
     Age: "",
     CNP: "",
-    Serie: "",
-    NR: "",
+    Series: "",
+    Number: "",
     Address: "",
     Education: "",
-    NivelExperientaAntreprenoriat: ""
+    ExperienceLevel: ""
   };
 
 const PersonalDetailsScreen = () => {
@@ -82,17 +82,17 @@ const PersonalDetailsScreen = () => {
                   ></Field>
                   <Field
                     style={{ width: "100%" }}
-                    label={t(PersonalDetailsScreen.Serie)}
-                    placeholder="Serie"
+                    label={t(PersonalDetailsScreen.Series)}
+                    placeholder="Series"
                     component={TextField}
-                    name="Serie"
+                    name="Series"
                   ></Field>
                   <Field
                     style={{ width: "100%" }}
-                    label={t(PersonalDetailsScreen.NR)}
-                    placeholder="NR"
+                    label={t(PersonalDetailsScreen.Number)}
+                    placeholder="Number"
                     component={TextField}
-                    name="NR"
+                    name="Number"
                   ></Field>
                   <Field
                     style={{ width: "100%" }}
@@ -110,14 +110,14 @@ const PersonalDetailsScreen = () => {
                   ></Field>
                     <Field
                     style={{ width: "100%" }}
-                    label={t("PersonalDetailsScreen.NivelExperientaAntreprenoriat")}
-                    name="NivelExperientaAntreprenoriat"
-                    placeholder={t("PersonalDetailsScreen.NivelExperientaAntreprenoriat")}
+                    label={t(PersonalDetailsScreen.ExperienceLevel)}
+                    name="ExperienceLevel"
+                    placeholder={t(PersonalDetailsScreen.ExperienceLevel)}
                     component={Select}
                   >
-                    <MenuItem value={1}>{t("PersonalDetailsScreen.Beginner")}</MenuItem>
-                    <MenuItem value={2}>{t("PersonalDetailsScreen.Medium")}</MenuItem>
-                    <MenuItem value={3}>{t("PersonalDetailsScreen.Advanced")}</MenuItem>
+                    <MenuItem value={1}>{t(PersonalDetailsScreen.Beginner)}</MenuItem>
+                    <MenuItem value={2}>{t(PersonalDetailsScreen.Medium)}</MenuItem>
+                    <MenuItem value={3}>{t(PersonalDetailsScreen.Advanced)}</MenuItem>
                   </Field>
                 </Box>
               </Grid>
