@@ -3,14 +3,17 @@ import { Card, CardContent, Box } from '@mui/material';
 import { Form, Formik } from 'formik';
 import { TranslationContext } from '../../store/translation-context';
 import { useContext } from 'react';
+import { useHistory } from "react-router-dom";
 import { Grid } from '@mui/material';
 import Controls from '../Controls/Controls';
 import classes from '../Wizard/Wizard.module.css';
 
 const BusinessModelScreen = () => {
+  const history = useHistory();
     const { t } = useContext(TranslationContext);
     const submitHandler = (values) => {
         console.log(values);
+        history.push('/businessModelQuestionsScreen');
       };
     return (
         <Card className={classes.wizard_container}>

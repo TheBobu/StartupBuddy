@@ -9,6 +9,7 @@ import Controls from "../Controls/Controls"
 import * as Yup from "yup";
 import i18n from "i18next";
 import classes from '../Wizard/Wizard.module.css';
+import { useHistory } from "react-router-dom";
 
 const ValidationSchema = () => {
     return Yup.object().shape({
@@ -27,9 +28,11 @@ const ValidationSchema = () => {
   };
 
 const BusinessModelQuestionsScreen = () => {
+  const history = useHistory();
     const { t } = useContext(TranslationContext);
     const submitHandler = (values) => {
         console.log(values);
+        history.push('/businessModelDrawIOScreen');
     }
     return (
     <Card className={classes.wizard_container}>

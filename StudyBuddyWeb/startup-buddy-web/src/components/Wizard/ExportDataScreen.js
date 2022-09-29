@@ -1,10 +1,11 @@
-import { useEffect, useState, useContext, useHistory } from "react";
+import { useEffect, useState, useContext } from "react";
 import useHttp from "../http/useHttp";
 import {Card, CardContent} from "@mui/material";
 import classes from '../Wizard/Wizard.module.css';
 import { Grid } from "@mui/material";
 import Controls from "../Controls/Controls";
 import { TranslationContext } from "../../store/translation-context";
+import { useHistory } from "react-router-dom";
 
 const ExportDataScreen = () => {
     const { t } = useContext(TranslationContext);

@@ -3,12 +3,13 @@ import {Card, CardContent, Box} from "@mui/material";
 import { Field, Form, Formik } from "formik";
 import { TextField } from "formik-mui"
 import { TranslationContext } from "../../store/translation-context";
-import { useContext, useHistory } from "react";
+import { useContext } from "react";
 import { Grid } from "@mui/material";
 import Controls from "../Controls/Controls"
 import * as Yup from "yup";
 import i18n from "i18next";
 import classes from '../Wizard/Wizard.module.css';
+import { useHistory } from "react-router-dom";
 
 const ValidationSchema = () => {
     return Yup.object().shape({
