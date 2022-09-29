@@ -47,5 +47,42 @@
     "Beginner": "Beginner",
     "Medium": "Medium",
     "Advanced": "Advanced"
+  },
+  "MarketResearchScreen":{
+    "Demand": "Is there a desire for your product or service?",
+    "Interest": "How many persons are interested in what you offer?"
+  },
+  "MarketResearchInDetailsScreen":{
+    "BusinessArea": "What kind of persons would choose your business?",
+    "Competitors": "With what things your business will distinguish from the other competitors? ",
+    "Revenue": "How much the potential clients will pay for your products/servicies? ",
+    "Differentiation": "What kind of similar products/servicies do exist?"
+  },
+  "BusinessModelQuestionsScreen":{
+    "Problem": "What is the problem which the product should resolve?",
+    "ProductSolution": "What is the product solution?",
+    "PrincipalClients": "Who are your principal clients?",
+    "Money": "How do you make money?"
+  },
+  "ProductDescriptionScreen":{
+    "Name": "Product Name",
+    "ProductType": "Product Type",
+    "Description": "Description"
+  },
+  "CompanyDescriptionScreen":{
+    "Name": "Company Name",
+    "Domain": "Domain",
+    "MainActivity": "Main Activity",
+    "SecondaryActivity": "SecondaryActivity",
+    "Description": "Description",
+    "ExperienceLevel": "Experience Level",
+    "NumberOfEmployees": "Number Of Employees",
+    "BusinessEmail": "Business Email",
+    "Phone": "Phone",
+    "CUI": "CUI",
+    "DateFounded": "Date Founded",
+    "SocialDomain": "Social Domain",
+    "ONRC": "ONRC",
+    "Accountant": "Accountant"
   }
 }
