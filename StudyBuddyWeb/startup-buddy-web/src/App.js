@@ -8,12 +8,14 @@ import PersonalDetailsScreen from './components/Wizard/PersonalDetailsScreen';
 import ProductDescriptionScreen from './components/Wizard/ProductDescriptionScreen';
 import MarketResearchScreen from './components/Wizard/MarketResearchScreen';
 import MarketResearchInDetailsScreen from './components/Wizard/MarketResearchInDetailsScreen';
+import Layout from './components/Layout/Layout';
 
 function App() {
   const authCtx = useContext(AuthContext);
   const isLoggedIn = authCtx.isLoggedIn;
   return (
-    <TranslationProvider>
+    <Layout>    
+      <TranslationProvider>
     <BrowserRouter>
     <Switch>
     <Route exact path="/auth">
@@ -34,6 +36,7 @@ function App() {
     </Switch>
     </BrowserRouter>
     </TranslationProvider>
+    </Layout>
   );
 }
 

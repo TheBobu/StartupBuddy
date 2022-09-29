@@ -31,5 +31,21 @@
     "InactiveAccount": "Your account is not activated!",
     "NonexistentUser": "The user does not exist!",
     "UserAlreadyExists": "An account with this email, already exists"
+  },
+  "General" :{
+    "Next": "Next",
+    "RequiredField": "The field is required!"
+  },
+  "PersonalDetailsScreen":{
+    "Age": "Age",
+    "CNP": "CNP",
+    "Series": "Series",
+    "Number": "Number",
+    "Address": "Address",
+    "Education": "Education",
+    "ExperienceLevel": "ExperienceLevel",
+    "Beginner": "Beginner",
+    "Medium": "Medium",
+    "Advanced": "Advanced"
   }
 }

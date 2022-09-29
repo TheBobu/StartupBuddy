@@ -31,7 +31,6 @@ const ProductDescriptionScreen = () => {
     return (
     <Card>
       <CardContent>
-        <h1>Hello World</h1>
         <Formik
         initialValues={InitialValues}
         validationSchema={ValidationSchema}
