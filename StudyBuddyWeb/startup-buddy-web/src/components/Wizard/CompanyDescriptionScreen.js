@@ -49,7 +49,7 @@ const ValidationSchema = () => {
     const [isAccountantChecked, setIsAccountantChecked] = useState(false);
     const [isCompanyChecked, setIsCompanyChecked] = useState(false);
     const [isStockMarketChecked, setIsStockMarketChecked] = useState(false);
-    const [isEmployeesChecked, setIsEmployeesChecked] = useState(false);
+    const [isEmployeesChecked, setIsEmployeesChecked] = useState(true);
     const submitHandler = (values) => {
         console.log(values);
     }
@@ -168,7 +168,8 @@ const ValidationSchema = () => {
                 >
                   </Field>
                   </div>
-                  <div className={classes.field}>
+                  {isEmployeesChecked && <div>
+                    <div className={classes.field}>
                   <Field
                     style={{ width: "100%" }}
                     label={t('CompanyDescriptionScreen.NumberOfEmployees')}
@@ -176,7 +177,7 @@ const ValidationSchema = () => {
                     component={TextField}
                     name="NumberOfEmployees"
                   ></Field>
-                  </div>
+                  </div></div>}
                   <div className={classes.field}>
                   <Field
                     style={{ width: "100%" }}
