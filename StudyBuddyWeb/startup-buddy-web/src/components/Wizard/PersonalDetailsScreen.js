@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { Card, CardContent, Box } from '@mui/material';
 import { Field, Form, Formik } from 'formik';
 import { TextField, Select } from 'formik-mui';
 import { TranslationContext } from '../../store/translation-context';
-import { useContext } from 'react';
+import { useContext,useEffect } from 'react';
 import { Grid, MenuItem } from '@mui/material';
 import Controls from '../Controls/Controls';
 import * as Yup from 'yup';
 import i18n from 'i18next';
 import classes from '../Wizard/Wizard.module.css';
+import useHttp from '../http/useHttp';
 
 const ValidationSchema = () => {
   return Yup.object().shape({
@@ -40,23 +41,51 @@ const ValidationSchema = () => {
   });
 };
 
-const InitialValues = {
-  FirstName: '',
-  LastName: '',
-  Age: '',
-  CNP: '',
-  Series: '',
-  Number: '',
-  Address: '',
-  Education: '',
-  ExperienceLevel: '',
-};
+
 
 const PersonalDetailsScreen = () => {
   const { t } = useContext(TranslationContext);
   const submitHandler = (values) => {
     console.log(values);
+    debugger;
+    sendData(values);
   };
+
+  const [InitialValues, setInitialValues] = useState({
+    FirstName: '',
+    LastName: '',
+    Age: '',
+    CNP: '',
+    Series: '',
+    Number: '',
+    Address: '',
+    Education: '',
+    ExperienceLevel: '',
+  });
+
+  const { fetchData: sendData, response:responseSend } = useHttp({
+    autoRun: false,
+    method: 'post',
+    url: '/PersonalInfo',
+    headers: {
+      'content-type': 'application/json',
+    },
+  });
+
+  const { response: responseGet } = useHttp({
+    method: 'get',
+    url: '/PersonalInfo',   
+  });
+  
+  useEffect(() => {
+    if(responseGet!=null){
+      console.log(responseGet)
+      setInitialValues(responseGet);
+    }
+    return () => {
+    }
+  }, [responseGet])
+  
   return (
     <Card className={classes.wizard_container}>
       <CardContent>
@@ -64,6 +93,7 @@ const PersonalDetailsScreen = () => {
           initialValues={InitialValues}
           validationSchema={ValidationSchema}
           onSubmit={submitHandler}
+          enableReinitialize={true}
         >
           <Form autoComplete='off'>
             <Grid container sx={{ mt: 4 }}>
@@ -85,7 +115,7 @@ const PersonalDetailsScreen = () => {
                       name='LastName'
                     ></Field>
                   </div>
-                  <div className={classes.field}>              
+                  <div className={classes.field}>
                     <Field
                       style={{ width: '100%' }}
                       label={t('PersonalDetailsScreen.Age')}
@@ -93,7 +123,7 @@ const PersonalDetailsScreen = () => {
                       name='Age'
                     ></Field>
                   </div>
-                  <div className={classes.field}>              
+                  <div className={classes.field}>
                     <Field
                       style={{ width: '100%' }}
                       label={t('PersonalDetailsScreen.CNP')}
@@ -101,7 +131,7 @@ const PersonalDetailsScreen = () => {
                       name='CNP'
                     ></Field>
                   </div>
-                  <div className={classes.field}>              
+                  <div className={classes.field}>
                     <Field
                       style={{ width: '100%' }}
                       label={t('PersonalDetailsScreen.Series')}
@@ -109,7 +139,7 @@ const PersonalDetailsScreen = () => {
                       name='Series'
                     ></Field>
                   </div>
-                  <div className={classes.field}>              
+                  <div className={classes.field}>
                     <Field
                       style={{ width: '100%' }}
                       label={t('PersonalDetailsScreen.Number')}
@@ -117,7 +147,7 @@ const PersonalDetailsScreen = () => {
                       name='Number'
                     ></Field>
                   </div>
-                  <div className={classes.field}>          
+                  <div className={classes.field}>
                     <Field
                       style={{ width: '100%' }}
                       label={t('PersonalDetailsScreen.Address')}
@@ -141,13 +171,13 @@ const PersonalDetailsScreen = () => {
                       component={Select}
                     >
                       <MenuItem value={1}>
-                        {t("PersonalDetailsScreen.Beginner")}
+                        {t('PersonalDetailsScreen.Beginner')}
                       </MenuItem>
                       <MenuItem value={2}>
-                        {t("PersonalDetailsScreen.Medium")}
+                        {t('PersonalDetailsScreen.Medium')}
                       </MenuItem>
                       <MenuItem value={3}>
-                        {t("PersonalDetailsScreen.Advanced")}
+                        {t('PersonalDetailsScreen.Advanced')}
                       </MenuItem>
                     </Field>
                   </div>
