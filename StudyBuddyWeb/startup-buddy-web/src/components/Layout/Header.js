@@ -21,7 +21,7 @@ const Header = () => {
       <Toolbar>
         <Grid container alignItems="center">
           <Grid item>
-          <Link to="/">Start Vizard</Link>
+          <Link to="/">Start Wizard</Link>
           </Grid>
           <Grid item sm></Grid>
           <Grid item>
