@@ -3,7 +3,7 @@ import {Card, CardContent, Box} from "@mui/material";
 import { Field, Form, Formik } from "formik";
 import { TextField } from "formik-mui"
 import { TranslationContext } from "../../store/translation-context";
-import { useContext } from "react";
+import { useContext, useHistory } from "react";
 import { Grid } from "@mui/material";
 import Controls from "../Controls/Controls"
 import * as Yup from "yup";
@@ -27,9 +27,11 @@ const ValidationSchema = () => {
     };
 
 const SocialMediaScreen = () => {
+  const history = useHistory();
     const { t } = useContext(TranslationContext);
     const submitHandler = (values) => {
         console.log(values);
+        history.push('/pitchScreen');
     }
     return (
     <Card className={classes.wizard_container}>
