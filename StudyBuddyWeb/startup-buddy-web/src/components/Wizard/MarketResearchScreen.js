@@ -1,9 +1,10 @@
-import React from "react";
+import useHttp from '../http/useHttp';
+import React, { useState } from 'react';
 import {Card, CardContent, Box} from "@mui/material";
-import { Field, Form, Formik } from "formik";
+import { Field, Formik } from "formik";
 import { TextField } from "formik-mui"
 import { TranslationContext } from "../../store/translation-context";
-import { useContext } from "react";
+import { useContext, useEffect } from 'react';
 import { Grid } from "@mui/material";
 import Controls from "../Controls/Controls"
 import * as Yup from "yup";
@@ -17,16 +18,48 @@ const ValidationSchema = () => {
     });
   };
 
-  const InitialValues = {
-    Demand: '',
-    Interest: '',
-    };
-
     const MarketResearchScreen = () => {
         const { t } = useContext(TranslationContext);
         const submitHandler = (values) => {
             console.log(values);
+            sendData(values);
         }
+        const marketResearchData = {
+          Demand: '',
+          Interest: '',
+          };
+          const [InitialValues, setInitialValues] = useState(marketResearchData);
+          const handleInputChange = (e) => {
+            const { name, value } = e.target;
+            setInitialValues({
+              ...InitialValues,
+              [name]: value,
+            });
+            console.log(e.target)
+          };
+        
+          const { fetchData: sendData, response: responseSend } = useHttp({
+            autoRun: false,
+            method: 'post',
+            url: '/MarketResearch',
+            headers: {
+              'content-type': 'application/json',
+            },
+          });
+        
+          const { response: responseGet } = useHttp({
+            method: 'get',
+            url: '/MarketResearch',
+          });
+        
+          useEffect(() => {
+            if (responseGet != null) {
+              console.log(responseGet);
+              setInitialValues(responseGet);
+            }
+            return () => {};
+          }, [responseGet]);
+
         return (
         <Card className={classes.wizard_container}>
           <CardContent> 
@@ -34,8 +67,11 @@ const ValidationSchema = () => {
             <Formik
             initialValues={InitialValues}
             validationSchema={ValidationSchema}
-            onSubmit={submitHandler}>
-              <Form autoComplete="off">
+            onSubmit={submitHandler}
+            enableReinitialize={true}>
+              {({ values,handleChange}) => {
+            return(
+          <form>
                 <Grid container sx={{ mt: 4 }}>
                   <Grid item xs={12}>
                     <Box paddingBottom={3} sx={{ mr: 2 }}>
@@ -45,6 +81,8 @@ const ValidationSchema = () => {
                         label={t('MarketResearchScreen.Demand')}
                         placeholder={t('MarketResearchScreen.Demand')}
                         component={TextField}
+                        onChange={handleChange}
+                        value={values.Demand || ""}
                         name="Demand"
                         multiline
                         rows={4}
@@ -56,6 +94,8 @@ const ValidationSchema = () => {
                         label={t('MarketResearchScreen.Interest')}
                         placeholder={t('MarketResearchScreen.Interest')}
                         component={TextField}
+                        onChange={handleChange}
+                        value={values.Interest || ""}
                         name="Interest"
                         multiline
                         rows={4}
@@ -71,7 +111,9 @@ const ValidationSchema = () => {
                 text={t('General.Next')}
               />
             </Grid>
-              </Form>
+            </form>
+          );
+        }}
             </Formik>
           </CardContent>
         </Card>
