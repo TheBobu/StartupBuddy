@@ -7,10 +7,10 @@
         IFileRepository FileRepository { get; }
         IMarketResearchRepository MarketResearchRepository { get; }
         IMemberRepository MemberRepository { get; }
+        IPersonalInfoRepository PersonalInfoRepository { get; }
         IProductRepository ProductRepository { get; }
         ISocialMediaRepository SocialMediaRepository { get; }
         IUserRepository UserRepository { get; }
-
         void Dispose();
 
         void Save();

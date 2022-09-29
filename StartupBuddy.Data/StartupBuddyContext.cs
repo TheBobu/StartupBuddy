@@ -14,6 +14,7 @@ namespace StartupBuddy.Data
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<SocialMedia> SocialMedias { get; set; }
         public virtual DbSet<BusinessModel> BusinessModels { get; set; }
+        public virtual DbSet<PersonalInfo> PersonalInfos { get; set; }
 
         public StartupBuddyContext(DbContextOptions<StartupBuddyContext> options) : base(options)
         {
