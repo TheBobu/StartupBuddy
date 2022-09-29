@@ -19,6 +19,12 @@ namespace StartupBuddy.BusinessLogic
 
             CreateMap<Product, ProductDto>();
             CreateMap<ProductDto, Product>();
+
+            CreateMap<MarketResearch, MarketResearchDto>();
+            CreateMap<MarketResearchDto, MarketResearch>();
+
+            CreateMap<BusinessModel, BusinessModelDto>();
+            CreateMap<BusinessModelDto, BusinessModel>();
         }
     }
 }

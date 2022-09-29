@@ -16,7 +16,7 @@ namespace StartupBuddy.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<MarketResearchDto> GetProduct()
+        public async Task<MarketResearchDto> GetMarketResearch()
         {
             return await marketResearchBusinessLogic.GetByUserId();
         }

@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using StartupBuddy.BusinessLogic.Interfaces;
 using StartupBuddy.Domain.Entities;
 using StartupBuddy.Domain.Interfaces;
-using StartupBuddy.Dtos.File;
 using StartupBuddy.Dtos.User;
 using File = StartupBuddy.Domain.Entities.File;
 
@@ -23,7 +21,7 @@ namespace StartupBuddy.BusinessLogic.Implementations
 
                 if (company.LogoFormFile != null)
                 {
-                    company.LogoFile = GetFileFromIFormFile(company.LogoFormFile);
+                    company.LogoFile = company.LogoFormFile.GetFileFromIFormFile();
                     var file = await unitOfWork.FileRepository.Add(mapper.Map<File>(company.LogoFile));
                     company.LogoFileId = file.Id;
                 }
@@ -41,7 +39,7 @@ namespace StartupBuddy.BusinessLogic.Implementations
             {
                 if (company.LogoFormFile != null)
                 {
-                    company.LogoFile = GetFileFromIFormFile(company.LogoFormFile);
+                    company.LogoFile = company.LogoFormFile.GetFileFromIFormFile();
 
                     if (company.LogoFileId != default)
                     {
@@ -70,24 +68,6 @@ namespace StartupBuddy.BusinessLogic.Implementations
         public CompanyDto GetByUserId()
         {
             return mapper.Map<CompanyDto>(unitOfWork.CompanyRepository.GetByUserId(identityContext.UserId.Value));
-        }
-
-        private FileDto GetFileFromIFormFile(IFormFile file)
-        {
-            using (var memoryStream = new MemoryStream())
-            {
-                file.CopyTo(memoryStream);
-                var fileBytes = memoryStream.ToArray();
-                string content = Convert.ToBase64String(fileBytes);
-
-                return new FileDto
-                {
-                    ContentType = file.ContentType,
-                    Name = file.Name,
-                    Size = file.Length,
-                    Content = content
-                };
-            }
         }
     }
 }
