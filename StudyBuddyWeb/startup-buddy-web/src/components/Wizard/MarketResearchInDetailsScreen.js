@@ -9,6 +9,7 @@ import Controls from "../Controls/Controls"
 import * as Yup from "yup";
 import i18n from "i18next";
 import classes from '../Wizard/Wizard.module.css';
+import { useHistory } from "react-router-dom";
 import useHttp from '../http/useHttp';
 
 
@@ -22,10 +23,12 @@ const ValidationSchema = () => {
   };
 
     const MarketResearchInDetailsScreen = () => {
+      const history = useHistory();
         const { t } = useContext(TranslationContext);
         const submitHandler = (values) => {
             console.log(values);
             sendData(values);
+            history.push('/businessModelScreen');
         }
         const marketResearchInDetailsData = {
           BusinessArea: '',

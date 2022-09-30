@@ -2,15 +2,17 @@ import React from "react";
 import {Card, CardContent, Box} from "@mui/material";
 import { Form, Formik } from "formik";
 import { TranslationContext } from "../../store/translation-context";
-import { useContext } from "react";
+import { useContext, useHistory } from "react";
 import { Grid } from "@mui/material";
 import Controls from "../Controls/Controls"
 import classes from '../Wizard/Wizard.module.css';
 
 const PitchScreen = () => {
+  const history = useHistory();
     const { t } = useContext(TranslationContext);
     const submitHandler = (values) => {
         console.log(values);
+        history.push('/exportDataScreen');
     }
     return (
         <Card className={classes.wizard_container}>

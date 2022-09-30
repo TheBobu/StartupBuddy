@@ -4,6 +4,7 @@ import { Field, Formik } from "formik";
 import { TextField, Select, Checkbox } from "formik-mui"
 import { TranslationContext } from "../../store/translation-context";
 import { useContext, useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { Grid, MenuItem } from "@mui/material";
 import Controls from "../Controls/Controls"
 import * as Yup from "yup";
@@ -31,12 +32,14 @@ const ValidationSchema = () => {
 
   const CompanyDescriptionScreen = () => {
     const { t } = useContext(TranslationContext);
+    const history = useHistory();
     const [isAccountantChecked, setIsAccountantChecked] = useState(false);
     const [isCompanyChecked, setIsCompanyChecked] = useState(false);
     const [isStockMarketChecked, setIsStockMarketChecked] = useState(false);
     const [isEmployeesChecked, setIsEmployeesChecked] = useState(false);
     const submitHandler = (values) => {
       console.log(values);
+        history.push('/productDescriptionScreen');
       sendData(values);
     };
   

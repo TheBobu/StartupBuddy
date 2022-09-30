@@ -1,9 +1,10 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, Box } from '@mui/material';
-import { Field, Form, Formik } from 'formik';
+import { Field, Formik } from 'formik';
 import { TextField, Select } from 'formik-mui';
 import { TranslationContext } from '../../store/translation-context';
 import { useContext, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 import { Grid, MenuItem } from '@mui/material';
 import Controls from '../Controls/Controls';
 import * as Yup from 'yup';
@@ -41,11 +42,11 @@ const ValidationSchema = () => {
 };
 
 const PersonalDetailsScreen = () => {
+  const history = useHistory();
   const { t } = useContext(TranslationContext);
   const submitHandler = (values) => {
-    console.log(values);
-    debugger;
     sendData(values);
+    history.push("/companyDescriptionScreen");
   };
 
   const personalData = {
@@ -210,8 +211,8 @@ const PersonalDetailsScreen = () => {
             </Grid>
             <Grid item xs={12}>
               <Controls.Button
+              type="submit"
                 className={classes.submit_button}
-                type='submit'
                 text={t('General.Next')}
               />
             </Grid>

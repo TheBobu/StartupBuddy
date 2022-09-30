@@ -10,13 +10,20 @@ import Controls from "../Controls/Controls"
 import * as Yup from "yup";
 import i18n from "i18next";
 import classes from '../Wizard/Wizard.module.css';
+import { useHistory } from "react-router-dom";
 
 const ValidationSchema = () => {
-    return Yup.object().shape({
-      Demand: Yup.string().min(2, "Too Short!").max(50, "Too Long!").required(i18n.t("General.RequiredField")),
-      Interest: Yup.string().min(2, "Too Short!").max(50, "Too Long!").required(i18n.t("General.RequiredField")),
-    });
-  };
+  return Yup.object().shape({
+    Demand: Yup.string()
+      .min(2, 'Too Short!')
+      .max(50, 'Too Long!')
+      .required(i18n.t('General.RequiredField')),
+    Interest: Yup.string()
+      .min(2, 'Too Short!')
+      .max(50, 'Too Long!')
+      .required(i18n.t('General.RequiredField')),
+  });
+};
 
     const MarketResearchScreen = () => {
         const { t } = useContext(TranslationContext);

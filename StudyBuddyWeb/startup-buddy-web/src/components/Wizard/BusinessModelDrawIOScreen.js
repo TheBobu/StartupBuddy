@@ -6,11 +6,16 @@ import { useContext } from "react";
 import { Grid } from "@mui/material";
 import Controls from "../Controls/Controls"
 import classes from '../Wizard/Wizard.module.css';
+import { useHistory } from "react-router-dom";
+
 
 const BusinessModelDrawIOScreen = () => {
+  const history = useHistory();
+
     const { t } = useContext(TranslationContext);
     const submitHandler = (values) => {
         console.log(values);
+        history.push('/fundRaisingScreen');
     }
     return (
         <Card className={classes.wizard_container}>
