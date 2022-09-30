@@ -1,16 +1,17 @@
 import React from 'react';
-import {Card, CardContent, Box} from "@mui/material";
+import {Card, CardContent, Box, FormControlLabel} from "@mui/material";
 import { Field, Formik } from "formik";
-import { TextField, Select, Checkbox } from "formik-mui"
+import { TextField, Select} from "formik-mui"
 import { TranslationContext } from "../../store/translation-context";
 import { useContext, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Grid, MenuItem } from "@mui/material";
+import { Grid, MenuItem, FormGroup} from "@mui/material";
 import Controls from "../Controls/Controls"
 import * as Yup from "yup";
 import i18n from "i18next";
 import classes from '../Wizard/Wizard.module.css';
 import useHttp from '../http/useHttp';
+import Checkbox from '@mui/material/Checkbox';
 
 const ValidationSchema = () => {
     return Yup.object().shape({
@@ -31,6 +32,7 @@ const ValidationSchema = () => {
   };
 
   const CompanyDescriptionScreen = () => {
+    const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     const { t } = useContext(TranslationContext);
     const history = useHistory();
     const [isAccountantChecked, setIsAccountantChecked] = useState(false);
@@ -195,43 +197,24 @@ const ValidationSchema = () => {
                     <MenuItem value={2}>Advanced</MenuItem>
                   </Field>
                   </div>
-                  <div className={classes.field}>
-                  <Field
+                  <Checkbox 
                   id="accountant"
-                    label={t('CompanyDescriptionScreen.Accountant')}
-                    name="accountant"
-                    component={Checkbox}
-                    value={isAccountantChecked}
-                    onChange={e=>{setIsAccountantChecked(e.target.checked)}}
-                    
-                >
-                  </Field>
-                  </div>
-                  <div className={classes.field}>
-                  <Field
+                    name='accountant' 
+                    checked={isAccountantChecked} 
+                    onChange={e=>{setIsAccountantChecked(e.target.checked)}} /> 
+                    <label style={{ color: 'black' }} htmlFor='accountant'> Do you need an accountant? </label>
+                  <Checkbox 
                   id="stockMarket"
-                    label={t('CompanyDescriptionScreen.StockMarket')}
-                    name="stockMarket"
-                    component={Checkbox}
-                    value={isStockMarketChecked}
-                    onChange={e=>{setIsStockMarketChecked(e.target.checked)}}
-                    
-                >
-                  </Field>
-                  </div>
-                  <div className={classes.field}>
-                  <Field
-                  id="employees"
-                    label={t('CompanyDescriptionScreen.Employees')}
-                    name="employees"
-                    component={Checkbox}
-                    value={isEmployeesChecked}
-                    onChange={e=>{setIsEmployeesChecked(e.target.checked)}}
-                    
-                >
-                  </Field>
-                  </div>
-                  {!isEmployeesChecked && <div className={classes.field}>
+                    name='stockMarket' 
+                    checked={isStockMarketChecked} 
+                    onChange={e=>{setIsStockMarketChecked(e.target.checked)}} /> 
+                    <label style={{ color: 'black' }} htmlFor='stockMarket'> Do you want to be listed on stock market? </label>
+                  <Checkbox 
+                    name='employees' 
+                    checked={isEmployeesChecked} 
+                    onChange={e=>{setIsEmployeesChecked(e.target.checked)}} /> 
+                    <label style={{ color: 'black' }} htmlFor='employees'> Will you have employees? </label>
+                  {isEmployeesChecked && <div className={classes.field}>
                     <div className={classes.field}>
                   <Field
                   id="numberOfEmployees"
@@ -269,18 +252,12 @@ const ValidationSchema = () => {
                   >
                   </Field>
                   </div>
-                  <div className={classes.field}>
-                  <Field
+                  <Checkbox 
                   id="foundedCompany"
-                    label={t('CompanyDescriptionScreen.FoundedCompany')}
-                    name="foundedCompany"
-                    component={Checkbox}
-                    value={isCompanyChecked}
-                    onChange={e=>{setIsCompanyChecked(e.target.checked)}}
-                    
-                >
-                  </Field>
-                  </div>
+                    name='foundedCompany' 
+                    checked={isCompanyChecked} 
+                    onChange={e=>{setIsCompanyChecked(e.target.checked)}} /> 
+                    <label style={{ color: 'black' }} htmlFor='foundedCompany'> Is Company Founded? </label>
                   {isCompanyChecked && <div>
                     <div className={classes.field}>
                     <Field
