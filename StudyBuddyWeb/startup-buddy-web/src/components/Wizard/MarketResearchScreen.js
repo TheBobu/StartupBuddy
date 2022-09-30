@@ -26,10 +26,12 @@ const ValidationSchema = () => {
 };
 
     const MarketResearchScreen = () => {
+      const history = useHistory();
         const { t } = useContext(TranslationContext);
         const submitHandler = (values) => {
             console.log(values);
             sendData(values);
+            history.push("/marketResearchScreen");
         }
         const marketResearchData = {
           Demand: '',
