@@ -191,7 +191,6 @@ const ValidationSchema = () => {
                   </div>
                   <div className={classes.field}>
                   <Field
-                    style={{ width: "100%" }}
                     label={t('CompanyDescriptionScreen.Accountant')}
                     name="Accountant"
                     component={Checkbox}
@@ -203,7 +202,6 @@ const ValidationSchema = () => {
                   </div>
                   <div className={classes.field}>
                   <Field
-                    style={{ width: "100%" }}
                     label={t('CompanyDescriptionScreen.StockMarket')}
                     name="StockMarket"
                     component={Checkbox}
@@ -224,7 +222,7 @@ const ValidationSchema = () => {
                 >
                   </Field>
                   </div>
-                  {!isEmployeesChecked && <div>
+                  {!isEmployeesChecked && <div className={classes.field}>
                     <div className={classes.field}>
                   <Field
                     style={{ width: "100%" }}
@@ -261,7 +259,6 @@ const ValidationSchema = () => {
                   </div>
                   <div className={classes.field}>
                   <Field
-                    style={{ width: "100%" }}
                     label={t('CompanyDescriptionScreen.FoundedCompany')}
                     name="FoundedCompany"
                     component={Checkbox}
