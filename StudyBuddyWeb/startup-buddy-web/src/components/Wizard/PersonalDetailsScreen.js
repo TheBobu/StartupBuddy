@@ -146,7 +146,7 @@ const PersonalDetailsScreen = () => {
                       component={TextField}
                       name='CNP'
                       onChange={handleChange}
-                      value={values.Cnp || ""}
+                      value={values.CNP || ""}
                     ></Field>
                   </div>
                   <div className={classes.field}>
