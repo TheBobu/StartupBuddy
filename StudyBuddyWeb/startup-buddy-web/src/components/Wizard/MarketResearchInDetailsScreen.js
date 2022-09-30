@@ -85,44 +85,56 @@ const ValidationSchema = () => {
                     <Box paddingBottom={3} sx={{ mr: 2 }}>
                     <div className={classes.field}>
                     <Field
+                    id="businessArea"
                         style={{ width: "100%" }}
                         label={t('MarketResearchInDetailsScreen.BusinessArea')}
                         placeholder="BusinessArea"
                         component={TextField}
-                        name="BusinessArea"
+                        onChange={handleChange}
+                        value={values.businessArea || ""}
+                        name="businessArea"
                         multiline
                         rows={2}
                       ></Field>
                       </div>
                       <div className={classes.field}>
                       <Field
+                      id="competitors"
                         style={{ width: "100%" }}
                         label={t('MarketResearchInDetailsScreen.Competitors')}
                         placeholder="Competitors"
                         component={TextField}
-                        name="Competitors"
+                        onChange={handleChange}
+                        value={values.competitors || ""}
+                        name="competitors"
                         multiline
                         rows={2}
                       ></Field>
                       </div>
                       <div className={classes.field}>
                       <Field
+                      id="revenue"
                         style={{ width: "100%" }}
                         label={t('MarketResearchInDetailsScreen.Revenue')}
                         placeholder="Revenue"
                         component={TextField}
-                        name="Revenue"
+                        onChange={handleChange}
+                        value={values.revenue || ""}
+                        name="revenue"
                         multiline
                         rows={2}
                       ></Field>
                       </div>
                       <div className={classes.field}>
                       <Field
+                      id="differentiation"
                         style={{ width: "100%" }}
                         label={t('MarketResearchInDetailsScreen.Differentiation')}
                         placeholder="Differentiation"
                         component={TextField}
-                        name="Differentiation"
+                        onChange={handleChange}
+                        value={values.differentiation || ""}
+                        name="differentiation"
                         multiline
                         rows={2}
                       ></Field>

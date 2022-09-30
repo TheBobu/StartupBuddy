@@ -112,24 +112,26 @@ const ValidationSchema = () => {
                 <Box paddingBottom={3} sx={{ mr: 2 }}>
                 <div className={classes.field}>
                   <Field
+                  id="name"
                     style={{ width: "100%" }}
                     label={t('CompanyDescriptionScreen.Name')}
                     placeholder={t('CompanyDescriptionScreen.Name')}
                     component={TextField}
                     onChange={handleChange}
-                    value={values.Name || ""}
-                    name="Name"
+                    value={values.name || ""}
+                    name="name"
                   ></Field>
                   </div>
                   <div className={classes.field}>
                   <Field
+                  id="domain"
                     formControl={{sx:{ width: '100%'}}}
                     label={t('CompanyDescriptionScreen.Domain')}
-                    name="Domain"
+                    name="domain"
                     placeholder={t('CompanyDescriptionScreen.Domain')}
                     component={Select}
                     onChange={handleChange}
-                    value={values.Domain || ""}
+                    value={values.domain || ""}
                   >
                     <MenuItem value={1}>Societatea cu Raspundere Limitata (SRL)</MenuItem>
                     <MenuItem value={2}>Societatea pe Actiuni (SA)</MenuItem>
@@ -143,47 +145,51 @@ const ValidationSchema = () => {
                   </div>
                   <div className={classes.field}>
                   <Field
+                  id="mainActivity"
                     style={{ width: "100%" }}
                     label={t('CompanyDescriptionScreen.MainActivity')}
                     placeholder={t('CompanyDescriptionScreen.MainActivity')}
                     component={TextField}
                     onChange={handleChange}
-                    value={values.MainActivity || ""}
-                    name="MainActivity"
+                    value={values.mainActivity || ""}
+                    name="mainActivity"
                   ></Field>
                   <a href="https://caen.ro">Coduri CAEN</a>
                   </div>
                   <div className={classes.field}>
                   <Field
+                  id="secondActivity"
                     style={{ width: "100%" }}
                     label={t('CompanyDescriptionScreen.SecondaryActivity')}
                     placeholder={t('CompanyDescriptionScreen.SecondaryActivity')}
                     component={TextField}
                     onChange={handleChange}
-                    value={values.SecondaryActivity || ""}
-                    name="SecondaryActivity"
+                    value={values.secondActivity || ""}
+                    name="secondActivity"
                   ></Field>
                   </div>
                   <div className={classes.field}>
                   <Field
+                  id="description"
                     style={{ width: "100%" }}
                     label={t('CompanyDescriptionScreen.Description')}
                     placeholder={t('CompanyDescriptionScreen.Description')}
                     component={TextField}
                     onChange={handleChange}
-                    value={values.Description || ""}
-                    name="Description"
+                    value={values.description || ""}
+                    name="description"
                   ></Field>
                   </div>
                   <div className={classes.field}>
                   <Field
+                  id="experienceLevel"
                     formControl={{sx:{ width: '100%'}}}
                     label={t('CompanyDescriptionScreen.ExperienceLevel')}
                     placeholder={t('CompanyDescriptionScreen.ExperienceLevel')}
-                    name="ExperienceLevel"
+                    name="experienceLevel"
                     component={Select}
                     onChange={handleChange}
-                    value={values.ExperienceLevel || ""}
+                    value={values.experienceLevel || ""}
                   >
                     <MenuItem value={1}>Beginner</MenuItem>
                     <MenuItem value={2}>Advanced</MenuItem>
@@ -191,8 +197,9 @@ const ValidationSchema = () => {
                   </div>
                   <div className={classes.field}>
                   <Field
+                  id="accountant"
                     label={t('CompanyDescriptionScreen.Accountant')}
-                    name="Accountant"
+                    name="accountant"
                     component={Checkbox}
                     value={isAccountantChecked}
                     onChange={e=>{setIsAccountantChecked(e.target.checked)}}
@@ -202,8 +209,9 @@ const ValidationSchema = () => {
                   </div>
                   <div className={classes.field}>
                   <Field
+                  id="stockMarket"
                     label={t('CompanyDescriptionScreen.StockMarket')}
-                    name="StockMarket"
+                    name="stockMarket"
                     component={Checkbox}
                     value={isStockMarketChecked}
                     onChange={e=>{setIsStockMarketChecked(e.target.checked)}}
@@ -213,8 +221,9 @@ const ValidationSchema = () => {
                   </div>
                   <div className={classes.field}>
                   <Field
+                  id="employees"
                     label={t('CompanyDescriptionScreen.Employees')}
-                    name="Employees"
+                    name="employees"
                     component={Checkbox}
                     value={isEmployeesChecked}
                     onChange={e=>{setIsEmployeesChecked(e.target.checked)}}
@@ -225,42 +234,46 @@ const ValidationSchema = () => {
                   {!isEmployeesChecked && <div className={classes.field}>
                     <div className={classes.field}>
                   <Field
+                  id="numberOfEmployees"
                     style={{ width: "100%" }}
                     label={t('CompanyDescriptionScreen.NumberOfEmployees')}
                     placeholder={t('CompanyDescriptionScreen.NumberOfEmployees')}
                     component={TextField}
                     onChange={handleChange}
-                    value={values.NumberOfEmployees || ""}
-                    name="NumberOfEmployees"
+                    value={values.numberOfEmployees || ""}
+                    name="numberOfEmployees"
                   ></Field>
                   </div></div>}
                   <div className={classes.field}>
                   <Field
+                  id="businessEmail"
                     style={{ width: "100%" }}
                     label={t('CompanyDescriptionScreen.BusinessEmail')}
                     placeholder={t('CompanyDescriptionScreen.BusinessEmail')}
                     component={TextField}
                     onChange={handleChange}
-                    value={values.BusinessEmail || ""}
-                    name="BusinessEmail"
+                    value={values.businessEmail || ""}
+                    name="businessEmail"
                   ></Field>
                   </div>
                   <div className={classes.field}>
                     <Field
+                    id="phone"
                     style={{ width: "100%" }}
                     label={t('CompanyDescriptionScreen.Phone')}
-                    name="Phone"
+                    name="phone"
                     placeholder={t('CompanyDescriptionScreen.Phone')}
                     component={TextField}
                     onChange={handleChange}
-                    value={values.Phone || ""}
+                    value={values.phone || ""}
                   >
                   </Field>
                   </div>
                   <div className={classes.field}>
                   <Field
+                  id="foundedCompany"
                     label={t('CompanyDescriptionScreen.FoundedCompany')}
-                    name="FoundedCompany"
+                    name="foundedCompany"
                     component={Checkbox}
                     value={isCompanyChecked}
                     onChange={e=>{setIsCompanyChecked(e.target.checked)}}
@@ -271,49 +284,53 @@ const ValidationSchema = () => {
                   {isCompanyChecked && <div>
                     <div className={classes.field}>
                     <Field
+                    id="cui"
                     style={{ width: "100%" }}
                     label={t('CompanyDescriptionScreen.CUI')}
                     name={t('CompanyDescriptionScreen.CUI')}
-                    placeholder="CUI"
+                    placeholder="cui"
                     component={TextField}
                     onChange={handleChange}
-                    value={values.CUI || ""}
+                    value={values.cui || ""}
                   >
                   </Field>
                   </div>
                   <div className={classes.field}>
                   <Field
+                  id="dateFounded"
                     style={{ width: "100%" }}
                     label={t('CompanyDescriptionScreen.DateFounded')}
-                    name={t('CompanyDescriptionScreen.DateFounded')}
-                    placeholder="DateFounded"
+                    name='dateFounded'
+                    placeholder="dateFounded"
                     component={TextField}
                     onChange={handleChange}
-                    value={values.DateFounded || ""}
+                    value={values.dateFounded || ""}
                   >
                   </Field>
                   </div>
                   <div className={classes.field}>
                   <Field
+                  id="socialDomain"
                     style={{ width: "100%" }}
                     label={t('CompanyDescriptionScreen.SocialDomain')}
-                    name={t('CompanyDescriptionScreen.SocialDomain')}
+                    name="socialDomain"
                     placeholder="SocialDomain"
                     component={TextField}
                     onChange={handleChange}
-                    value={values.SocialDomain || ""}
+                    value={values.socialDomain || ""}
                   >
                   </Field>
                   </div>
                   <div className={classes.field}>
                   <Field
+                  id="onrc"
                     style={{ width: "100%" }}
                     label={t('CompanyDescriptionScreen.ONRC')}
-                    name="ONRC"
+                    name="onrc"
                     placeholder={t('CompanyDescriptionScreen.ONRC')}
                     component={TextField}
                     onChange={handleChange}
-                    value={values.ONRC || ""}
+                    value={values.onrc || ""}
                   >
                   </Field>
                   </div>

@@ -82,39 +82,42 @@ const ProductDescriptionScreen = () => {
                 <Box paddingBottom={3} sx={{ mr: 2 }}>
                 <div className={classes.field}>
                 <Field
+                id="name"
                     style={{ width: "100%" }}
                     label={t('ProductDescriptionScreen.Name')}
                     placeholder="Name"
                     component={TextField}
                     onChange={handleChange}
-                    value={values.Name || ""}
-                    name="Name"
+                    value={values.name || ""}
+                    name="name"
                     multiline
                     rows={4}
                   ></Field>
                   </div>
                   <div className={classes.field}>
                   <Field
+                  id="productType"
                     style={{ width: "100%" }}
                     label={t('ProductDescriptionScreen.ProductType')}
                     placeholder="ProductType"
                     component={TextField}
                     onChange={handleChange}
-                    value={values.ProductType || ""}
-                    name="ProductType"
+                    value={values.productType || ""}
+                    name="productType"
                     multiline
                     rows={4}
                   ></Field>
                   </div>
                   <div className={classes.field}>
                   <Field
+                  id="description"
                     style={{ width: "100%" }}
                     label={t('ProductDescriptionScreen.Description')}
                     placeholder="Description"
                     component={TextField}
                     onChange={handleChange}
-                    value={values.Description || ""}
-                    name="Description"
+                    value={values.description || ""}
+                    name="description"
                     multiline
                     rows={4}
                   ></Field>

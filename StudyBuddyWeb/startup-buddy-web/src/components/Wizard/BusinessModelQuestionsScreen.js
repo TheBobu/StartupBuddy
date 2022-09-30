@@ -82,48 +82,52 @@ const BusinessModelQuestionsScreen = () => {
                 <Box paddingBottom={3} sx={{ mr: 2 }}>
                 <div className={classes.field}>
                 <Field
+                id="problem"
                     style={{ width: "100%" }}
                     label={t('BusinessModelQuestionsScreen.Problem')}
                     component={TextField}
                     onChange={handleChange}
-                    value={values.Problem || ""}
-                    name="Problem"
+                    value={values.problem || ""}
+                    name="problem"
                     multiline
                     rows={4}
                   ></Field>
                   </div>
                   <div className={classes.field}>
                   <Field
+                  id="productSolution"
                     style={{ width: "100%" }}
                     label={t('BusinessModelQuestionsScreen.ProductSolution')}
                     component={TextField}
                     onChange={handleChange}
-                    value={values.ProductSolution || ""}
-                    name="ProductSolution"
+                    value={values.productSolution || ""}
+                    name="productSolution"
                     multiline
                     rows={4}
                   ></Field>
                   </div>
                   <div className={classes.field}>
                   <Field
+                  id="principalClients"
                     style={{ width: "100%" }}
                     label={t('BusinessModelQuestionsScreen.PrincipalClients')}
                     component={TextField}
                     onChange={handleChange}
-                    value={values.PrincipalClients || ""}
-                    name="PrincipalClients"
+                    value={values.principalClients || ""}
+                    name="principalClients"
                     multiline
                     rows={4}
                   ></Field>
                   </div>
                   <div className={classes.field}>
                   <Field
+                  id="money"
                     style={{ width: "100%" }}
                     label={t('BusinessModelQuestionsScreen.Money')}
                     component={TextField}
                     onChange={handleChange}
-                    value={values.Money || ""}
-                    name="Money"
+                    value={values.money || ""}
+                    name="money"
                     multiline
                     rows={4}
                   ></Field>

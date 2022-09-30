@@ -84,42 +84,46 @@ const SocialMediaScreen = () => {
                 <Box paddingBottom={3} sx={{ mr: 2 }}>
                 <div className={classes.field}>
                 <Field
+                id="webPage"
                     style={{ width: "100%" }}
                     label={"Web Page"}
                     component={TextField}
                     onChange={handleChange}
-                    value={values.WebPage || ""}
-                    name="WebPage"
+                    value={values.webPage || ""}
+                    name="webPage"
                   ></Field>
                   </div>
                   <div className={classes.field}>
                   <Field
+                  id="facebook"
                     style={{ width: "100%" }}
                     label={"Facebook"}
                     component={TextField}
                     onChange={handleChange}
-                    value={values.Facebook || ""}
-                    name="Facebook"
+                    value={values.facebook || ""}
+                    name="facebook"
                   ></Field>
                   </div>
                   <div className={classes.field}>
                   <Field
+                  id="instagram"
                     style={{ width: "100%" }}
                     label={"Instagram"}
                     component={TextField}
                     onChange={handleChange}
-                    value={values.Instagram || ""}
-                    name="Instagram"
+                    value={values.instagram || ""}
+                    name="instagram"
                   ></Field>
                   </div>
                   <div className={classes.field}>
                   <Field
+                  id="linkedin"
                     style={{ width: "100%" }}
                     label={"Linkedin"}
                     component={TextField}
                     onChange={handleChange}
-                    value={values.Linkedin || ""}
-                    name="Linkedin"
+                    value={values.linkedin || ""}
+                    name="linkedin"
                   ></Field>
                   </div>
                 </Box>

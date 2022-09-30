@@ -114,89 +114,97 @@ const PersonalDetailsScreen = () => {
                       style={{ width: '100%' }}
                       label={t('Authentication.FirstName')}
                       component={TextField}
-                      name='FirstName'
+                      name='firstName'
                       onChange={handleChange}
                       value={values.firstName}
                     ></Field>
                   </div>
                   <div className={classes.field}>
                     <Field
+                      id="lastName"
                       style={{ width: '100%' }}
                       label={t('Authentication.LastName')}
                       component={TextField}
-                      name='LastName'
+                      name='lastName'
                       onChange={handleChange}
-                      value={values.LastName || ""}
+                      value={values.lastName || ""}
                     ></Field>
                   </div>
                   <div className={classes.field}>
                     <Field
+                    id="age"
                       style={{ width: '100%' }}
                       label={t('PersonalDetailsScreen.Age')}
                       component={TextField}
-                      name='Age'
+                      name='age'
                       onChange={handleChange}
-                      value={values.Age || ""}
+                      value={values.age || ""}
                     ></Field>
                   </div>
                   <div className={classes.field}>
                     <Field
+                    id="cnp"
                       style={{ width: '100%' }}
                       label={t('PersonalDetailsScreen.CNP')}
                       component={TextField}
-                      name='CNP'
+                      name='cnp'
                       onChange={handleChange}
-                      value={values.CNP || ""}
+                      value={values.cnp || ""}
                     ></Field>
                   </div>
                   <div className={classes.field}>
                     <Field
+                    id="series"
                       style={{ width: '100%' }}
                       label={t('PersonalDetailsScreen.Series')}
                       component={TextField}
-                      name='Series'
+                      name='series'
                       onChange={handleChange}
-                      value={values.Series || ""}
+                      value={values.series || ""}
                     ></Field>
                   </div>
                   <div className={classes.field}>
                     <Field
+                    id="number"
                       style={{ width: '100%' }}
                       label={t('PersonalDetailsScreen.Number')}
                       component={TextField}
-                      name='Number'
+                      name='number'
                       onChange={handleChange}
-                      value={values.Number || ""}
+                      value={values.number || ""}
                     ></Field>
                   </div>
                   <div className={classes.field}>
                     <Field
+                    id="address"
                       style={{ width: '100%' }}
                       label={t('PersonalDetailsScreen.Address')}
                       component={TextField}
-                      name='Address'
+                      name='address'
                       onChange={handleChange}
-                      value={values.Address || ""}
+                      value={values.address || ""}
                     ></Field>
                   </div>
                   <div className={classes.field}>
                     <Field
+                    id="education"
                       style={{ width: '100%' }}
                       label={t('PersonalDetailsScreen.Education')}
                       component={TextField}
-                      name='Education'
+                      name='education'
                       onChange={handleChange}
-                      value={values.Education || ""}
+                      value={values.education || ""}
                     ></Field>
                   </div>
                   <div className={classes.field}>
                     <Field
+                    id="experienceLevel"
                       formControl={{ sx: { width: '100%' } }}
                       label={t('PersonalDetailsScreen.ExperienceLevel')}
-                      name='ExperienceLevel'
+                      name='experienceLevel'
                       component={Select}
                       onChange={handleChange}
-                      value={values.ExperienceLevel || ""}
+                      value={values.experienceLevel || ""}
                     >
                       <MenuItem value={1}>
                         {t('PersonalDetailsScreen.Beginner')}

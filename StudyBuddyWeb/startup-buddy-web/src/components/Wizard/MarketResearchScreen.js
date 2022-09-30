@@ -86,26 +86,28 @@ const ValidationSchema = () => {
                     <Box paddingBottom={3} sx={{ mr: 2 }}>
                     <div className={classes.field}>
                     <Field
+                    id="demand"
                         style={{ width: '100%' }}
                         label={t('MarketResearchScreen.Demand')}
                         placeholder={t('MarketResearchScreen.Demand')}
                         component={TextField}
                         onChange={handleChange}
-                        value={values.Demand || ""}
-                        name="Demand"
+                        value={values.demand || ""}
+                        name="demand"
                         multiline
                         rows={4}
                       ></Field>
                       </div>
                       <div className={classes.field}>
                       <Field
+                      id="interest"
                         style={{ width: '100%' }}
                         label={t('MarketResearchScreen.Interest')}
                         placeholder={t('MarketResearchScreen.Interest')}
                         component={TextField}
                         onChange={handleChange}
-                        value={values.Interest || ""}
-                        name="Interest"
+                        value={values.interest || ""}
+                        name="interest"
                         multiline
                         rows={4}
                       ></Field>
