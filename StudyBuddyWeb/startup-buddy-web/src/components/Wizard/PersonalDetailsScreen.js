@@ -100,9 +100,8 @@ const PersonalDetailsScreen = () => {
         <Formik
           initialValues={InitialValues}
           validationSchema={ValidationSchema}
-          onSubmit={submitHandler}
         enableReinitialize={true}
-        >
+        onSubmit={submitHandler}>
           {({ values,handleChange}) => {
             return(
           <form>
@@ -111,12 +110,13 @@ const PersonalDetailsScreen = () => {
                 <Box paddingBottom={3} sx={{ mr: 2 }}>
                   <div className={classes.field}>
                     <Field
+                    id="firstName"
                       style={{ width: '100%' }}
                       label={t('Authentication.FirstName')}
                       component={TextField}
                       name='FirstName'
                       onChange={handleChange}
-                      value={values.FirstName || ""}
+                      value={values.firstName}
                     ></Field>
                   </div>
                   <div className={classes.field}>
@@ -213,7 +213,7 @@ const PersonalDetailsScreen = () => {
               <Controls.Button
               type="submit"
                 className={classes.submit_button}
-                text={t('General.Next')}
+                text={t('General.Next')}                
               />
             </Grid>
           </form>
