@@ -14,8 +14,6 @@ const useAuth = () => {
   const history = useHistory();
 
   const registrationInitialValues = {
-    firstName: "",
-    lastName: "",
     email: "",
     password: "",
   };
@@ -51,11 +49,10 @@ const useAuth = () => {
 
 
   const submitHandlerLogin = async (values) => {
-    await sleep(3000);
     console.log("values", values);
     setIsLoading(true);
     let url;
-    url = baseURL+ "/Account/Login";
+    url = "https://localhost:7290/api/Account/Login";
     fetch(url, {
       method: "POST",
       headers: {
@@ -67,7 +64,6 @@ const useAuth = () => {
       }),
     })
       .then((res) => {
-        debugger;
         setIsLoading(false);
         if (res.ok) {
           return res.json();
@@ -81,7 +77,7 @@ const useAuth = () => {
       .then((data) => {
         console.log(data);
         const expirationTime = new Date(new Date().getTime() + 30 * 60000); 
-        authCtx.login(data.idToken, expirationTime.toISOString());
+        authCtx.login(data.authorizationToken, expirationTime.toISOString());
         history.replace("/"); 
         window.location.reload();
       })

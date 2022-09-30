@@ -22,28 +22,6 @@ const RegisterForm = () => {
         <Formik initialValues={registrationInitialValues} onSubmit={submitHandlerRegister}>
         <Form autoComplete="off">
             <Grid container sx={{ mt: 4 }}>
-              <Grid item xs={6}>
-                <Box paddingBottom={3} sx={{ mr: 2 }}>
-                  <Field
-                    style={{ width: "100%" }}
-                    label={t("Authentication.FirstName")}
-                    placeholder={t("Authentication.FirstNamePlaceholder")}
-                    component={TextField}
-                    name="firstName"
-                  ></Field>
-                </Box>
-              </Grid>
-              <Grid item xs={6}>
-                <Box paddingBottom={3}>
-                  <Field
-                    style={{ width: "100%" }}
-                    label={t("Authentication.LastName")}
-                    placeholder={t("Authentication.LastNamePlaceholder")}
-                    component={TextField}
-                    name="lastName"
-                  ></Field>
-                </Box>
-              </Grid>
               <Grid item xs={12}>
                 <Box paddingBottom={3}>
                   <Field
