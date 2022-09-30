@@ -26,7 +26,7 @@ const BusinessModelQuestionsScreen = () => {
     const { t } = useContext(TranslationContext);
     const submitHandler = (values) => {
         console.log(values);
-        history.push('/businessModelDrawIOScreen');
+        
     }
     const businessModelQuestionsData = {
       Problem: '',
@@ -47,7 +47,7 @@ const BusinessModelQuestionsScreen = () => {
           const { fetchData: sendData, response: responseSend } = useHttp({
             autoRun: false,
             method: 'post',
-            url: '/BusinessModelQuestions',
+            url: '/BusinessModel',
             headers: {
               'content-type': 'application/json',
             },
@@ -55,7 +55,7 @@ const BusinessModelQuestionsScreen = () => {
         
           const { response: responseGet } = useHttp({
             method: 'get',
-            url: '/BusinessModelQuestions',
+            url: '/BusinessModel',
           });
         
           useEffect(() => {
@@ -72,7 +72,7 @@ const BusinessModelQuestionsScreen = () => {
         <Formik
         initialValues={InitialValues}
         validationSchema={ValidationSchema}
-        onSubmit={submitHandler}
+    
         enableReinitialize={true}>
           {({ values,handleChange}) => {
             return(
@@ -138,7 +138,7 @@ const BusinessModelQuestionsScreen = () => {
             <Grid item xs={12}>
               <Controls.Button
                 className={classes.submit_button}
-                type='submit'
+                onClick={()=>{history.push('/businessModelDrawIOScreen');}}
                 text={t('General.Next')}
               />
             </Grid>

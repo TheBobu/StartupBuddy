@@ -31,7 +31,7 @@ const ValidationSchema = () => {
         const submitHandler = (values) => {
             console.log(values);
             sendData(values);
-            history.push("/marketResearchScreen");
+            
         }
         const marketResearchData = {
           Demand: '',
@@ -118,7 +118,7 @@ const ValidationSchema = () => {
                 <Grid item xs={12}>
               <Controls.Button
                 className={classes.submit_button}
-                type='submit'
+                onClick={()=>{history.push("/marketResearchInDetailsScreen");}}
                 text={t('General.Next')}
               />
             </Grid>

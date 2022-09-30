@@ -13,7 +13,7 @@ const Header = () => {
   const isLoggedIn = authCtx.isLoggedIn;
   const LogoutHandler = () => {
     authCtx.logout();
-    history.pushState("/");
+    history.push("/auth");
   };
 
   return (

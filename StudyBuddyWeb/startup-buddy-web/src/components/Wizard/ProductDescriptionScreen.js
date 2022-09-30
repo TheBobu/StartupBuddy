@@ -25,7 +25,7 @@ const ProductDescriptionScreen = () => {
     const { t } = useContext(TranslationContext);
     const submitHandler = (values) => {
         console.log(values);
-        history.push('/marketResearchScreen');
+        
         sendData(values);
     }
     const productDescriptionData = {
@@ -46,7 +46,7 @@ const ProductDescriptionScreen = () => {
       const { fetchData: sendData, response: responseSend } = useHttp({
         autoRun: false,
         method: 'post',
-        url: '/MarketResearch',
+        url: '/Product',
         headers: {
           'content-type': 'application/json',
         },
@@ -54,7 +54,7 @@ const ProductDescriptionScreen = () => {
     
       const { response: responseGet } = useHttp({
         method: 'get',
-        url: '/MarketResearch',
+        url: '/Product',
       });
     
       useEffect(() => {
@@ -128,7 +128,7 @@ const ProductDescriptionScreen = () => {
             <Grid item xs={12}>
               <Controls.Button
                 className={classes.submit_button}
-                type='submit'
+                onClick={()=>{history.push('/marketResearchScreen');}}
                 text={t('General.Next')}
               />
             </Grid>
