@@ -13,15 +13,12 @@ const FundRaisingScreen = () => {
     const { t } = useContext(TranslationContext);
     const submitHandler = (values) => {
         console.log(values);
-        history.push('/fundRaisingScreen');
+        
     }
     return (
         <Card className={classes.wizard_container}>
         <CardContent>
         <h1>Fund Raising Posibilities</h1>
-        <Formik
-        onSubmit={submitHandler}>
-          <Form autoComplete="off">
             <Grid container sx={{ mt: 4 }}>
               <Grid item xs={12}>
                 <Box paddingBottom={3} sx={{ mr: 2 }}>
@@ -37,12 +34,10 @@ const FundRaisingScreen = () => {
             <Grid item xs={12}>
               <Controls.Button
                 className={classes.submit_button}
-                type='submit'
+                onClick={()=>{history.push('/socialMediaScreen');}}
                 text={t('General.Next')}
               />
             </Grid>
-            </Form>
-            </Formik>
         </CardContent>
         </Card>
     );};

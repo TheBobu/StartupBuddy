@@ -46,7 +46,7 @@ const PersonalDetailsScreen = () => {
   const { t } = useContext(TranslationContext);
   const submitHandler = (values) => {
     sendData(values);
-    history.push("/companyDescriptionScreen");
+    
   };
 
   const personalData = {
@@ -219,7 +219,7 @@ const PersonalDetailsScreen = () => {
             </Grid>
             <Grid item xs={12}>
               <Controls.Button
-              type="submit"
+                onClick = {()=>history.push("/companyDescriptionScreen")}
                 className={classes.submit_button}
                 text={t('General.Next')}                
               />

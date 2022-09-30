@@ -26,7 +26,7 @@ const SocialMediaScreen = () => {
     const { t } = useContext(TranslationContext);
     const submitHandler = (values) => {
         console.log(values);
-        history.push('/pitchScreen');
+        
         sendData(values);
     }
     const socialMediaData = {
@@ -132,7 +132,7 @@ const SocialMediaScreen = () => {
             <Grid item xs={12}>
               <Controls.Button
                 className={classes.submit_button}
-                type='submit'
+                onClick={()=>{history.push('/pitchScreen');}}
                 text={t('General.Next')}
               />
             </Grid>

@@ -39,7 +39,7 @@ const ValidationSchema = () => {
     const [isEmployeesChecked, setIsEmployeesChecked] = useState(false);
     const submitHandler = (values) => {
       console.log(values);
-        history.push('/productDescriptionScreen');
+        
       sendData(values);
     };
   
@@ -76,7 +76,7 @@ const ValidationSchema = () => {
     const { fetchData: sendData, response: responseSend } = useHttp({
       autoRun: false,
       method: 'post',
-      url: '/CompanyDescription',
+      url: '/Company',
       headers: {
         'content-type': 'application/json',
       },
@@ -84,7 +84,7 @@ const ValidationSchema = () => {
   
     const { response: responseGet } = useHttp({
       method: 'get',
-      url: '/CompanyDescription',
+      url: '/Company',
     });
   
     useEffect(() => {
@@ -341,7 +341,7 @@ const ValidationSchema = () => {
             <Grid item xs={12}>
               <Controls.Button
                 className={classes.submit_button}
-                type='submit'
+                onClick={()=>{history.push('/productDescriptionScreen')}}
                 text={t('General.Next')}
               />
             </Grid>

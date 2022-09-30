@@ -28,7 +28,7 @@ const ValidationSchema = () => {
         const submitHandler = (values) => {
             console.log(values);
             sendData(values);
-            history.push('/businessModelScreen');
+            
         }
         const marketResearchInDetailsData = {
           BusinessArea: '',
@@ -49,7 +49,7 @@ const ValidationSchema = () => {
           const { fetchData: sendData, response: responseSend } = useHttp({
             autoRun: false,
             method: 'post',
-            url: '/MarketResearchInDetails',
+            url: '/MarketResearch',
             headers: {
               'content-type': 'application/json',
             },
@@ -57,7 +57,7 @@ const ValidationSchema = () => {
         
           const { response: responseGet } = useHttp({
             method: 'get',
-            url: '/MarketResearchInDetails',
+            url: '/MarketResearch',
           });
         
           useEffect(() => {
@@ -145,7 +145,7 @@ const ValidationSchema = () => {
                 <Grid item xs={12}>
               <Controls.Button
                 className={classes.submit_button}
-                type='submit'
+                onClick={()=>{history.push('/businessModelScreen');}}
                 text={t('General.Next')}
               />
             </Grid>
