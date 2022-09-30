@@ -102,8 +102,7 @@ const PersonalDetailsScreen = () => {
           validationSchema={ValidationSchema}
         enableReinitialize={true}
         onSubmit={submitHandler}>
-        >
-          {({ values,handleChange,}) => {
+          {({ values,handleChange}) => {
             return(
           <form>
             <Grid container sx={{ mt: 4 }}>
