@@ -1,15 +1,16 @@
-import React from "react";
+import React from 'react';
 import {Card, CardContent, Box} from "@mui/material";
-import { Field, Form, Formik } from "formik";
+import { Field, Formik } from "formik";
 import { TextField, Select, Checkbox } from "formik-mui"
 import { TranslationContext } from "../../store/translation-context";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Grid, MenuItem } from "@mui/material";
 import Controls from "../Controls/Controls"
 import * as Yup from "yup";
 import i18n from "i18next";
 import classes from '../Wizard/Wizard.module.css';
+import useHttp from '../http/useHttp';
 
 const ValidationSchema = () => {
     return Yup.object().shape({
@@ -29,33 +30,71 @@ const ValidationSchema = () => {
     });
   };
 
-  const InitialValues = {
-    Name: "",
-    Domain: "",
-    MainActivity: "",
-    SecondaryActivity: "",
-    Description: "",
-    ExperienceLevel: "",
-    NumberOfEmployees: "",
-    BusinessEmail: "",
-    Phone: "",
-    CUI: "",
-    DateFounded: "",
-    SocialDomain: "",
-    ONRC: ""
-  };
-
   const CompanyDescriptionScreen = () => {
     const { t } = useContext(TranslationContext);
     const history = useHistory();
     const [isAccountantChecked, setIsAccountantChecked] = useState(false);
     const [isCompanyChecked, setIsCompanyChecked] = useState(false);
     const [isStockMarketChecked, setIsStockMarketChecked] = useState(false);
-    const [isEmployeesChecked, setIsEmployeesChecked] = useState(true);
+    const [isEmployeesChecked, setIsEmployeesChecked] = useState(false);
     const submitHandler = (values) => {
-        console.log(values);
+      console.log(values);
         history.push('/productDescriptionScreen');
-    }
+      sendData(values);
+    };
+  
+    const companyDescriptionData = {
+      Name: '',
+      Domain: '',
+      MainActivity: '',
+      SecondaryActivity: '',
+      Description: '',
+      ExperienceLevel: '',
+      NumberOfEmployees: '',
+      Employees: '',
+      StockMarket: '',
+      Accountant: '',
+      BusinessEmail: '',
+      Phone: '',
+      CUI: '',
+      DateFounded: '',
+      SocialDomain: '',
+      ONRC: '',
+      FoundedCompany: ''
+    };
+    const [InitialValues, setInitialValues] = useState(companyDescriptionData);
+  
+    const handleInputChange = (e) => {
+      const { name, value } = e.target;
+      setInitialValues({
+        ...InitialValues,
+        [name]: value,
+      });
+      console.log(e.target)
+    };
+  
+    const { fetchData: sendData, response: responseSend } = useHttp({
+      autoRun: false,
+      method: 'post',
+      url: '/CompanyDescription',
+      headers: {
+        'content-type': 'application/json',
+      },
+    });
+  
+    const { response: responseGet } = useHttp({
+      method: 'get',
+      url: '/CompanyDescription',
+    });
+  
+    useEffect(() => {
+      if (responseGet != null) {
+        console.log(responseGet);
+        setInitialValues(responseGet);
+      }
+      return () => {};
+    }, [responseGet]);
+
     return (
     <Card className={classes.wizard_container}>
       <CardContent>
@@ -63,8 +102,11 @@ const ValidationSchema = () => {
         <Formik
         initialValues={InitialValues}
         validationSchema={ValidationSchema}
-        onSubmit={submitHandler}>
-          <Form autoComplete="off">
+        onSubmit={submitHandler}
+        enableReinitialize={true}>
+           {({ values,handleChange}) => {
+            return(
+          <form>
             <Grid container sx={{ mt: 4 }}>
               <Grid item xs={12}>
                 <Box paddingBottom={3} sx={{ mr: 2 }}>
@@ -74,16 +116,20 @@ const ValidationSchema = () => {
                     label={t('CompanyDescriptionScreen.Name')}
                     placeholder={t('CompanyDescriptionScreen.Name')}
                     component={TextField}
+                    onChange={handleChange}
+                    value={values.Name || ""}
                     name="Name"
                   ></Field>
                   </div>
                   <div className={classes.field}>
                   <Field
-                    style={{ width: "100%" }}
+                    formControl={{sx:{ width: '100%'}}}
                     label={t('CompanyDescriptionScreen.Domain')}
                     name="Domain"
                     placeholder={t('CompanyDescriptionScreen.Domain')}
                     component={Select}
+                    onChange={handleChange}
+                    value={values.Domain || ""}
                   >
                     <MenuItem value={1}>Societatea cu Raspundere Limitata (SRL)</MenuItem>
                     <MenuItem value={2}>Societatea pe Actiuni (SA)</MenuItem>
@@ -101,6 +147,8 @@ const ValidationSchema = () => {
                     label={t('CompanyDescriptionScreen.MainActivity')}
                     placeholder={t('CompanyDescriptionScreen.MainActivity')}
                     component={TextField}
+                    onChange={handleChange}
+                    value={values.MainActivity || ""}
                     name="MainActivity"
                   ></Field>
                   <a href="https://caen.ro">Coduri CAEN</a>
@@ -111,6 +159,8 @@ const ValidationSchema = () => {
                     label={t('CompanyDescriptionScreen.SecondaryActivity')}
                     placeholder={t('CompanyDescriptionScreen.SecondaryActivity')}
                     component={TextField}
+                    onChange={handleChange}
+                    value={values.SecondaryActivity || ""}
                     name="SecondaryActivity"
                   ></Field>
                   </div>
@@ -120,16 +170,20 @@ const ValidationSchema = () => {
                     label={t('CompanyDescriptionScreen.Description')}
                     placeholder={t('CompanyDescriptionScreen.Description')}
                     component={TextField}
+                    onChange={handleChange}
+                    value={values.Description || ""}
                     name="Description"
                   ></Field>
                   </div>
                   <div className={classes.field}>
                   <Field
-                    style={{ width: "100%" }}
+                    formControl={{sx:{ width: '100%'}}}
                     label={t('CompanyDescriptionScreen.ExperienceLevel')}
                     placeholder={t('CompanyDescriptionScreen.ExperienceLevel')}
                     name="ExperienceLevel"
                     component={Select}
+                    onChange={handleChange}
+                    value={values.ExperienceLevel || ""}
                   >
                     <MenuItem value={1}>Beginner</MenuItem>
                     <MenuItem value={2}>Advanced</MenuItem>
@@ -161,7 +215,6 @@ const ValidationSchema = () => {
                   </div>
                   <div className={classes.field}>
                   <Field
-                    style={{ width: "100%" }}
                     label={t('CompanyDescriptionScreen.Employees')}
                     name="Employees"
                     component={Checkbox}
@@ -171,13 +224,15 @@ const ValidationSchema = () => {
                 >
                   </Field>
                   </div>
-                  {isEmployeesChecked && <div>
+                  {!isEmployeesChecked && <div>
                     <div className={classes.field}>
                   <Field
                     style={{ width: "100%" }}
                     label={t('CompanyDescriptionScreen.NumberOfEmployees')}
                     placeholder={t('CompanyDescriptionScreen.NumberOfEmployees')}
                     component={TextField}
+                    onChange={handleChange}
+                    value={values.NumberOfEmployees || ""}
                     name="NumberOfEmployees"
                   ></Field>
                   </div></div>}
@@ -187,6 +242,8 @@ const ValidationSchema = () => {
                     label={t('CompanyDescriptionScreen.BusinessEmail')}
                     placeholder={t('CompanyDescriptionScreen.BusinessEmail')}
                     component={TextField}
+                    onChange={handleChange}
+                    value={values.BusinessEmail || ""}
                     name="BusinessEmail"
                   ></Field>
                   </div>
@@ -197,6 +254,8 @@ const ValidationSchema = () => {
                     name="Phone"
                     placeholder={t('CompanyDescriptionScreen.Phone')}
                     component={TextField}
+                    onChange={handleChange}
+                    value={values.Phone || ""}
                   >
                   </Field>
                   </div>
@@ -220,6 +279,8 @@ const ValidationSchema = () => {
                     name={t('CompanyDescriptionScreen.CUI')}
                     placeholder="CUI"
                     component={TextField}
+                    onChange={handleChange}
+                    value={values.CUI || ""}
                   >
                   </Field>
                   </div>
@@ -230,6 +291,8 @@ const ValidationSchema = () => {
                     name={t('CompanyDescriptionScreen.DateFounded')}
                     placeholder="DateFounded"
                     component={TextField}
+                    onChange={handleChange}
+                    value={values.DateFounded || ""}
                   >
                   </Field>
                   </div>
@@ -240,6 +303,8 @@ const ValidationSchema = () => {
                     name={t('CompanyDescriptionScreen.SocialDomain')}
                     placeholder="SocialDomain"
                     component={TextField}
+                    onChange={handleChange}
+                    value={values.SocialDomain || ""}
                   >
                   </Field>
                   </div>
@@ -250,6 +315,8 @@ const ValidationSchema = () => {
                     name="ONRC"
                     placeholder={t('CompanyDescriptionScreen.ONRC')}
                     component={TextField}
+                    onChange={handleChange}
+                    value={values.ONRC || ""}
                   >
                   </Field>
                   </div>
@@ -264,7 +331,9 @@ const ValidationSchema = () => {
                 text={t('General.Next')}
               />
             </Grid>
-          </Form>
+            </form>
+          );
+        }}
         </Formik>
       </CardContent>
     </Card>

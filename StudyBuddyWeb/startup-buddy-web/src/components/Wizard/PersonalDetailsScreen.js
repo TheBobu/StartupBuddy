@@ -96,6 +96,7 @@ const PersonalDetailsScreen = () => {
   return (
     <Card className={classes.wizard_container}>
       <CardContent>
+      <h1>Personal Details</h1>
         <Formik
           initialValues={InitialValues}
           validationSchema={ValidationSchema}
@@ -113,7 +114,7 @@ const PersonalDetailsScreen = () => {
                     id="firstName"
                       style={{ width: '100%' }}
                       label={t('Authentication.FirstName')}
-                      component={Controls.Input}
+                      component={TextField}
                       name='FirstName'
                       onChange={handleChange}
                       value={values.firstName}
@@ -126,7 +127,7 @@ const PersonalDetailsScreen = () => {
                       component={TextField}
                       name='LastName'
                       onChange={handleChange}
-                      value={values.lastName || ""}
+                      value={values.LastName || ""}
                     ></Field>
                   </div>
                   <div className={classes.field}>
@@ -136,7 +137,7 @@ const PersonalDetailsScreen = () => {
                       component={TextField}
                       name='Age'
                       onChange={handleChange}
-                      value={values.age || ""}
+                      value={values.Age || ""}
                     ></Field>
                   </div>
                   <div className={classes.field}>
@@ -146,7 +147,7 @@ const PersonalDetailsScreen = () => {
                       component={TextField}
                       name='CNP'
                       onChange={handleChange}
-                      value={values.cnp || ""}
+                      value={values.CNP || ""}
                     ></Field>
                   </div>
                   <div className={classes.field}>
@@ -156,7 +157,7 @@ const PersonalDetailsScreen = () => {
                       component={TextField}
                       name='Series'
                       onChange={handleChange}
-                      value={values.series || ""}
+                      value={values.Series || ""}
                     ></Field>
                   </div>
                   <div className={classes.field}>
@@ -166,7 +167,7 @@ const PersonalDetailsScreen = () => {
                       component={TextField}
                       name='Number'
                       onChange={handleChange}
-                      value={values.number || ""}
+                      value={values.Number || ""}
                     ></Field>
                   </div>
                   <div className={classes.field}>
@@ -176,7 +177,7 @@ const PersonalDetailsScreen = () => {
                       component={TextField}
                       name='Address'
                       onChange={handleChange}
-                      value={values.address || ""}
+                      value={values.Address || ""}
                     ></Field>
                   </div>
                   <div className={classes.field}>
@@ -186,7 +187,7 @@ const PersonalDetailsScreen = () => {
                       component={TextField}
                       name='Education'
                       onChange={handleChange}
-                      value={values.education || ""}
+                      value={values.Education || ""}
                     ></Field>
                   </div>
                   <div className={classes.field}>
@@ -196,15 +197,12 @@ const PersonalDetailsScreen = () => {
                       name='ExperienceLevel'
                       component={Select}
                       onChange={handleChange}
-                      value={values.experienceLevel || ""}
+                      value={values.ExperienceLevel || ""}
                     >
                       <MenuItem value={1}>
                         {t('PersonalDetailsScreen.Beginner')}
                       </MenuItem>
                       <MenuItem value={2}>
-                        {t('PersonalDetailsScreen.Medium')}
-                      </MenuItem>
-                      <MenuItem value={3}>
                         {t('PersonalDetailsScreen.Advanced')}
                       </MenuItem>
                     </Field>

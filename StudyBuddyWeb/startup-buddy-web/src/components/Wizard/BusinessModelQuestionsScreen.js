@@ -1,9 +1,10 @@
-import React from "react";
+import useHttp from '../http/useHttp';
+import React, { useState } from 'react';
 import {Card, CardContent, Box} from "@mui/material";
-import { Field, Form, Formik } from "formik";
+import { Field, Formik } from "formik";
 import { TextField } from "formik-mui"
 import { TranslationContext } from "../../store/translation-context";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Grid } from "@mui/material";
 import Controls from "../Controls/Controls"
 import * as Yup from "yup";
@@ -20,13 +21,6 @@ const ValidationSchema = () => {
     });
   };
 
-  const InitialValues = {
-    Problem: "",
-    ProductSolution: "",
-    PrincipalClients: "",
-    Money: ""
-  };
-
 const BusinessModelQuestionsScreen = () => {
   const history = useHistory();
     const { t } = useContext(TranslationContext);
@@ -34,6 +28,43 @@ const BusinessModelQuestionsScreen = () => {
         console.log(values);
         history.push('/businessModelDrawIOScreen');
     }
+    const businessModelQuestionsData = {
+      Problem: '',
+      ProductSolution: '',
+      PrincipalClients: '',
+      Money: ''
+    };
+    const [InitialValues, setInitialValues] = useState(businessModelQuestionsData);
+          const handleInputChange = (e) => {
+            const { name, value } = e.target;
+            setInitialValues({
+              ...InitialValues,
+              [name]: value,
+            });
+            console.log(e.target)
+          };
+        
+          const { fetchData: sendData, response: responseSend } = useHttp({
+            autoRun: false,
+            method: 'post',
+            url: '/BusinessModelQuestions',
+            headers: {
+              'content-type': 'application/json',
+            },
+          });
+        
+          const { response: responseGet } = useHttp({
+            method: 'get',
+            url: '/BusinessModelQuestions',
+          });
+        
+          useEffect(() => {
+            if (responseGet != null) {
+              console.log(responseGet);
+              setInitialValues(responseGet);
+            }
+            return () => {};
+          }, [responseGet]);
     return (
     <Card className={classes.wizard_container}>
       <CardContent>
@@ -41,8 +72,11 @@ const BusinessModelQuestionsScreen = () => {
         <Formik
         initialValues={InitialValues}
         validationSchema={ValidationSchema}
-        onSubmit={submitHandler}>
-          <Form autoComplete="off">
+        onSubmit={submitHandler}
+        enableReinitialize={true}>
+          {({ values,handleChange}) => {
+            return(
+          <form>
             <Grid container sx={{ mt: 4 }}>
               <Grid item xs={12}>
                 <Box paddingBottom={3} sx={{ mr: 2 }}>
@@ -51,6 +85,8 @@ const BusinessModelQuestionsScreen = () => {
                     style={{ width: "100%" }}
                     label={t('BusinessModelQuestionsScreen.Problem')}
                     component={TextField}
+                    onChange={handleChange}
+                    value={values.Problem || ""}
                     name="Problem"
                     multiline
                     rows={4}
@@ -61,6 +97,8 @@ const BusinessModelQuestionsScreen = () => {
                     style={{ width: "100%" }}
                     label={t('BusinessModelQuestionsScreen.ProductSolution')}
                     component={TextField}
+                    onChange={handleChange}
+                    value={values.ProductSolution || ""}
                     name="ProductSolution"
                     multiline
                     rows={4}
@@ -71,6 +109,8 @@ const BusinessModelQuestionsScreen = () => {
                     style={{ width: "100%" }}
                     label={t('BusinessModelQuestionsScreen.PrincipalClients')}
                     component={TextField}
+                    onChange={handleChange}
+                    value={values.PrincipalClients || ""}
                     name="PrincipalClients"
                     multiline
                     rows={4}
@@ -81,6 +121,8 @@ const BusinessModelQuestionsScreen = () => {
                     style={{ width: "100%" }}
                     label={t('BusinessModelQuestionsScreen.Money')}
                     component={TextField}
+                    onChange={handleChange}
+                    value={values.Money || ""}
                     name="Money"
                     multiline
                     rows={4}
@@ -96,7 +138,9 @@ const BusinessModelQuestionsScreen = () => {
                 text={t('General.Next')}
               />
             </Grid>
-          </Form>
+            </form>
+          );
+        }}
         </Formik>
       </CardContent>
     </Card>
